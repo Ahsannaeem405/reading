@@ -20,7 +20,7 @@ class CreateReadingsTable extends Migration
             $table->string('story_image')->nullable();
             $table->string('writer_image')->nullable();
             $table->string('short_detail')->nullable();
-            $table->string('long_detail')->nullable();
+            $table->text('long_detail')->nullable();
             $table->string('content')->nullable();
             $table->integer('user_id')->nullable();
             $table->timestamps();

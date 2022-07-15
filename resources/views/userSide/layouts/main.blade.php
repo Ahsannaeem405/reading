@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{asset('userSide/assets/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('userSide/assets/css/style.css')}}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <script src="{{asset('userSide/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
 
 </head>
 <body>
@@ -279,7 +279,7 @@
 
 <script src="{{asset('userSide/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="{{asset('userSide/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+
 <script src="{{asset('userSide/assets/js/popper.min.js')}}"></script>
 <script src="{{asset('userSide/assets/js/bootstrap.min.js')}}"></script>
 <!-- Jquery Mobile Menu -->

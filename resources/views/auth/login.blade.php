@@ -33,7 +33,7 @@
                         <div class="form-group col-lg-12">
                             <label for="exampleInputEmail1" style="text-align: left !important;">Email</label>
 
-                            <input type="email" name="email" class="form-control" required id="exampleInputEmail1"
+                            <input type="email" name="email" class="form-control" value="{{old('email')}}" required id="exampleInputEmail1"
                                    aria-describedby="emailHelp" placeholder="Enter email">
 
                             @if($errors->has('email'))
