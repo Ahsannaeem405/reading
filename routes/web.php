@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('userSide.index');
+    return view('userSide.login_type');
 });
 
 Route::view('about','userSide.about');
@@ -83,6 +83,14 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function (){
     Route::post('readings/category/save',[\App\Http\Controllers\CategoryController::class,'save']);
     Route::get('readings/category/del/{id}',[\App\Http\Controllers\CategoryController::class,'del']);
     Route::post('readings/category/update/{id}',[\App\Http\Controllers\CategoryController::class,'update']);
+
+    Route::get('readings/question_category',[\App\Http\Controllers\CategoryController::class,'question_category']);
+    Route::post('readings/question_category/save',[\App\Http\Controllers\CategoryController::class,'quescatg_save']);
+    Route::post('readings/question_category/update/{id}',[\App\Http\Controllers\CategoryController::class,'quescatg_update']);
+    Route::get('readings/question_category/del/{id}',[\App\Http\Controllers\CategoryController::class,'quescatg_del']);
+
+
+
     Route::get('readings/story',[\App\Http\Controllers\AdminController::class,'story_index']);
     Route::get('readings/story/add',[\App\Http\Controllers\AdminController::class,'add_story']);
     Route::post('readings/story/save',[\App\Http\Controllers\AdminController::class,'save_story']);

@@ -43,6 +43,7 @@ class userReading extends Controller
 
     public function start_question($id,Request $request)
     {
+        // dd($request);
         $value = $request->time;
         $value=  gmdate("i:s", $value);
         \Session::put('spend_time',$value);
@@ -54,7 +55,7 @@ class userReading extends Controller
     public function story_save($id,Request $request)
     {
 
-//dd(Session::get('spend_time'));
+// dd(Session::get('spend_time'));
         $reading = new reading();
 
 
@@ -83,7 +84,7 @@ class userReading extends Controller
             $question->points = $request->point[$i];
 
             $question->story_id = $reading->id;
-
+            $question->catg_quest_id = $request->q_catg_id[$i];
             $question->save();
 
             $total=$total+$request->point[$i];
@@ -152,7 +153,7 @@ class userReading extends Controller
 
     public function cat_index($id)
     {
-        $story=reading::where('cat_id',$id)->orderBy('id','DESC')->get();
+        $story=reading::where('cat_id',$id)->where('type','admin')->orderBy('id','DESC')->get();
 
         $category=category::all();
         return view('userSide.reading.reading',compact('story','category'));

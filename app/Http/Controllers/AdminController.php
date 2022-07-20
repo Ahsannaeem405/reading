@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\category;
+use App\Models\QuestCategory;
+
 use App\Models\reading;
 use App\Models\storyQuestion;
 use App\Models\storyQuestionDetail;
@@ -139,17 +141,19 @@ public function add_story()
 {
     //dd(1);
     $category=category::all();
-    return view('admin.reading.storyAdd',compact('category'));
+    $Quest_category=QuestCategory::all();
+    return view('admin.reading.storyAdd',compact('category','Quest_category'));
 }
 
 public function save_story(Request $request)
 {
 
-    //dd($request);
+    // dd($request);
     $reading = new reading();
     $reading->story_title = $request->story_title;
     $reading->writer_name = $request->writer_name;
     $reading->cat_id = $request->cat;
+    $reading->reread = $request->reread;
 
     if ($request->hasfile('story_image')) {
         $file = $request->file('story_image');
@@ -185,61 +189,67 @@ public function save_story(Request $request)
 
     // dd($request);
     for ($i = 0; $i < count($request->question); $i++) {
-        $count = 1;
-        $check=0;
-        $k = $next;
-        $question = new storyQuestion();
-        $question->question = $request->question[$i];
-        $question->points = $request->point[$i];
-        $question->story_id = $reading->id;
+        if($request->question[$i] !=Null)
+        {
 
-        $question->save();
-
-        for ($k; $k < count($request->option); $k++) {
-            if ($count <= 4) {
-                $question_detail = new storyQuestionDetail();
-                $question_detail->option = $request->option[$k];
-                $question_detail->question_id = $question->id;
+            $count = 1;
+            $check=0;
+            $k = $next;
+            $question = new storyQuestion();
+            $question->question = $request->question[$i];
+            $question->points = $request->point[$i];
+            $question->story_id = $reading->id;
+            $question->catg_quest_id = $request->question_cat[$i];
 
 
+            $question->save();
 
-                if($check==0) {
-                    $index = 'check_'.$l;
-                    if (isset($request->$index)) {
-                    if ($request->$index==$count) {
-                        $question_detail->correct = 'yes';
-                        $check = 1;
-                        echo $l;
-                        $l++;
-                    }
-                    } else {
+            for ($k; $k < count($request->option); $k++) {
+                if ($count <= 4) {
+                    $question_detail = new storyQuestionDetail();
+                    $question_detail->option = $request->option[$k];
+                    $question_detail->question_id = $question->id;
 
+
+
+                    if($check==0) {
                         $index = 'check_'.$l;
-                        while (!isset($request->$index)) {
-                            echo 'data'.$l;
+                        if (isset($request->$index)) {
+                        if ($request->$index==$count) {
+                            $question_detail->correct = 'yes';
+                            $check = 1;
+                            echo $l;
                             $l++;
-                            $index = 'check_'.$l;
-
                         }
-                        if(isset($request->$index))
-                        {
-                            if ($request->$index==$count) {
-                                $question_detail->correct = 'yes';
-                                $check = 1;
+                        } else {
+
+                            $index = 'check_'.$l;
+                            while (!isset($request->$index)) {
+                                echo 'data'.$l;
                                 $l++;
+                                $index = 'check_'.$l;
+
+                            }
+                            if(isset($request->$index))
+                            {
+                                if ($request->$index==$count) {
+                                    $question_detail->correct = 'yes';
+                                    $check = 1;
+                                    $l++;
+                                }
                             }
                         }
                     }
+                    $question_detail->save();
+
+                    $count++;
                 }
-                $question_detail->save();
+                else{
+                    $next=$k;
+                    break;
+                }
 
-                $count++;
             }
-            else{
-                $next=$k;
-                break;
-            }
-
         }
     }
     return redirect('admin/readings/story')->with('success','Story added successfully');
@@ -254,6 +264,7 @@ public function save_story(Request $request)
         $reading->story_title = $request->story_title;
         $reading->writer_name = $request->writer_name;
         $reading->cat_id = $request->cat;
+        $reading->reread = $request->reread;
 
         if ($request->hasfile('story_image')) {
             $file = $request->file('story_image');
@@ -282,7 +293,7 @@ public function save_story(Request $request)
         $reading->user_id = \Auth::user()->id;
 
         $reading->update();
-//dd($request->option);
+        //dd($request->option);
 
         $question=storyQuestion::where('story_id',$reading->id)->delete();
         $questionDetail=storyQuestionDetail::where('question_id',$reading->id)->delete();
@@ -293,65 +304,69 @@ public function save_story(Request $request)
 
         // dd($request);
         for ($i = 0; $i < count($request->question); $i++) {
-            $count = 1;
+            if($request->question[$i] !=Null)
+            {
+                $count = 1;
 
-            $check=0;
-            $k = $next;
-            $question = new storyQuestion();
-            $question->question = $request->question[$i];
-            $question->points = $request->point[$i];
-            $question->story_id = $reading->id;
+                $check=0;
+                $k = $next;
+                $question = new storyQuestion();
+                $question->question = $request->question[$i];
+                $question->points = $request->point[$i];
+                $question->story_id = $reading->id;
+                $question->catg_quest_id = $request->question_cat[$i];
 
-            $question->save();
+                $question->save();
 
-            for ($k; $k < count($request->option); $k++) {
-                if ($count <= 4) {
-                    $question_detail = new storyQuestionDetail();
-                    $question_detail->option = $request->option[$k];
-                    $question_detail->question_id = $question->id;
+                for ($k; $k < count($request->option); $k++) {
+                    if ($count <= 4) {
+                        $question_detail = new storyQuestionDetail();
+                        $question_detail->option = $request->option[$k];
+                        $question_detail->question_id = $question->id;
 
 
 
-                    if($check==0) {
-                        $index = 'check_'.$l;
-                        if (isset($request->$index)) {
-                            if ($request->$index==$count) {
-                                $question_detail->correct = 'yes';
-                                $check = 1;
-                                echo $l;
-                                $l++;
-                            }
-                        } else {
-
+                        if($check==0) {
                             $index = 'check_'.$l;
-                            while (!isset($request->$index)) {
-                                echo 'data'.$l;
-                                $l++;
-                                $index = 'check_'.$l;
-
-                            }
-                            if(isset($request->$index))
-                            {
+                            if (isset($request->$index)) {
                                 if ($request->$index==$count) {
                                     $question_detail->correct = 'yes';
                                     $check = 1;
+                                    echo $l;
                                     $l++;
+                                }
+                            } else {
+
+                                $index = 'check_'.$l;
+                                while (!isset($request->$index)) {
+                                    echo 'data'.$l;
+                                    $l++;
+                                    $index = 'check_'.$l;
+
+                                }
+                                if(isset($request->$index))
+                                {
+                                    if ($request->$index==$count) {
+                                        $question_detail->correct = 'yes';
+                                        $check = 1;
+                                        $l++;
+                                    }
                                 }
                             }
                         }
+
+                        $question_detail->save();
+
+                        $count++;
+                    }
+                    else{
+
+                        $next=$k;
+                        break;
+
                     }
 
-                    $question_detail->save();
-
-                    $count++;
                 }
-                else{
-
-                    $next=$k;
-                    break;
-
-                }
-
             }
         }
         return redirect('admin/readings/story')->with('success','Story updated successfully');
@@ -369,6 +384,7 @@ public function story_edit($id)
 {
     $reading=reading::find($id);
 $category=category::all();
-    return view('admin.reading.storyEdit',compact('reading','category'));
+$Quest_category=QuestCategory::all();
+    return view('admin.reading.storyEdit',compact('reading','category','Quest_category'));
 }
 }

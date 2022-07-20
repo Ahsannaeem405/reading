@@ -50,6 +50,9 @@
                     <li class={{ Request::is('admin/readings/category')? 'active' : '' }} ><a href="{{url('admin/readings/category')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Category</span></a>
                     </li>
 
+                    <li class={{ Request::is('admin/readings/question_category')? 'active' : '' }} ><a href="{{url('admin/readings/question_category')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Question Category</span></a>
+                    </li>
+
                     <li class={{ Request::is('admin/readings/story')? 'active' : '' }} ><a href="{{url('admin/readings/story')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">story</span></a>
                     </li>
 

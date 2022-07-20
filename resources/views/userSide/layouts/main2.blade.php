@@ -74,7 +74,7 @@
             <div class="header-bottom header-sticky">
                 <!-- Logo -->
                 <div class="logo d-none d-lg-block" style="padding: 0px !important;">
-                    <a href="{{url('/')}}"> <img style="padding: 0px !important;
+                    <a href="{{url('/students/dashboard')}}"> <img style="padding: 0px !important;
     width: 113px !important;
     height: 89px !important;" src="{{asset('userSide/assets/img/logo/logo5.jpg')}}" alt=""></a>
                 </div>
@@ -82,7 +82,7 @@
                     <div class="menu-wrapper">
                         <!-- Logo -->
                         <div class="logo logo2 d-block d-lg-none" style="padding: 0px !important;">
-                            <a href="{{url('/')}}"> <img style="padding: 0px !important;
+                            <a href="{{url('/students/dashboard')}}"> <img style="padding: 0px !important;
     width: 113px !important;
     height: 89px !important;" src="{{asset('userSide/assets/img/logo/logo5.jpg')}}" alt=""></a>
                         </div>
@@ -103,9 +103,9 @@
                                                 <li><a href="{{url('/teacher/Students')}}">Students</a></li>                                            @endif
                                         @endif
 
-                                    <li><a href="{{url('/')}}">Home</a></li>
+                                    <!-- <li><a href="{{url('/')}}">Home</a></li>
                                     <li><a href="{{url('/about')}}">About</a></li>
-                                    <li><a href="{{url('/contact')}}">Contact</a></li>
+                                    <li><a href="{{url('/contact')}}">Contact</a></li> -->
                                     @if(Auth::check())
                                         @if(Auth::user()->role =='student')
                                             <li><a href="{{url('/readings')}}">Reading</a></li>

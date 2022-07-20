@@ -70,7 +70,14 @@
                                             </div>
                                         </div>
 
-
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">
+                                                    Re read 
+                                                </label>
+                                                <input class="form-control" type="number" name="reread" id="" onkeyup="this.value=this.value.replace(/[^0-9]/g);" required>
+                                            </div>
+                                        </div>
                                     </div>
                                 </fieldset>
 
@@ -132,6 +139,21 @@
                                                 <i class="fa fa-trash d-inline-block remove_div" abc="1" style="color: red;font-size: 20px" ></i>
 
                                             </div>
+
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label for="e">
+                                                        Select Question Category
+                                                    </label>
+                                                    <select class="form-control required" id="cat2" name="question_cat[]">
+                                                        <option selected value="">Select category</option>
+                                                        @foreach($Quest_category as $cat2)
+                                                            <option value="{{$cat2->id}}">{{$cat2->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
                                             <div class="container-fluid">
                                             <div class="row">
                                                 <div class="col-lg-12 p-1 "  >
@@ -211,6 +233,12 @@
            op+='<input  type="number" class="form-control required col-md-8 d-inline-block" id="p'+count+'" name="point[]">';
           op+=' <i class="fa fa-trash d-inline-block remove_div" abc="'+ count +'" style="color: red;font-size: 20px" ></i> </div>';
 
+
+          op+='<div class="col-md-8"><div class="form-group">';
+            op+='<label for="e2"> Select Question Category</label><br>';
+           op+='<select class="form-control required" id="cat2" name="question_cat[]">';
+          op+=' @foreach($Quest_category as $cat2)<option value="{{$cat2->id}}">{{$cat2->name}}</option>@endforeach</select>';
+          op+='</div></div>';
 
           op+='   <div class="container-fluid">';
                 op+='<div class="row">';

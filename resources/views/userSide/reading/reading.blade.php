@@ -231,7 +231,8 @@
                                         <div class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
 
                                             <div class="bbb_viewed_content text-center">
-                                                <div class="bbb_viewed_name"><a href="{{url('readings/'.$cat->id.'')}}">{{$cat->name}}</a></div>
+                                                <div class="bbb_viewed_name"><a href="{{url('readings/'.$cat->id.'')}}">
+                                                    <span style="display: flex;justify-content: center;"><img src="{{ asset('uploads/category_images/'.$cat->image) }}" style="height: 70px; width: auto;"></span>{{$cat->name}}</a></div>
                                             </div>
 
                                         </div>

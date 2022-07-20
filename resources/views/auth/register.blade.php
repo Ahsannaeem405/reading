@@ -6,7 +6,7 @@
     <main>
 
 
-        <div class="slider-area">
+        <!-- <div class="slider-area">
             <div class="slider-height2 d-flex align-items-center">
                 <div class="container">
                     <div class="row">
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <div class="container mt-5 mb-5">

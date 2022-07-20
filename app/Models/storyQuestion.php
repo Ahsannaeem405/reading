@@ -14,4 +14,10 @@ class storyQuestion extends Model
     {
         return $this->hasMany('App\Models\storyQuestionDetail','question_id','id');
     }
+
+    public function catgname()
+
+    {
+        return $this->belongsTo('App\Models\QuestCategory','catg_quest_id','id');
+    }
 }

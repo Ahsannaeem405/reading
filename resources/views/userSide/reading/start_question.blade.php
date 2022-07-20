@@ -45,6 +45,7 @@
                                                 <span><input type="hidden" value="{{$question->question}}"
                                                         name="question[]">{{$question->question}}?</span>
                                                 <input type="hidden" name="q_id[]" value="{{$question->id}}">
+                                                <input type="text" name="q_catg_id[]" value="{{$question->catg_quest_id}}">
                                                 <div class="bottom mt-5 ml-lg-4">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-sm-12">
@@ -158,18 +159,26 @@
     </div>
 </main>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    
     $(document).ready(function(){
-        // alert('ggg');
+     
         $(document).on("click",".next",function() {
-            // alert("click");
-            $('.main2.active').addClass('d-none').removeClass('active').next().next().removeClass('d-none').addClass('active');
-            $('.main3.active2').addClass('d-none').removeClass('active2').next().next().removeClass('d-none').addClass('active2');
-            
+            if($('.main2.active').find('.custom-checkbox').is(':checked')) {
+                
+                $('.main2.active').addClass('d-none').removeClass('active').next().next().removeClass('d-none').addClass('active');
+                $('.main3.active2').addClass('d-none').removeClass('active2').next().next().removeClass('d-none').addClass('active2');
+
+            }else{
+                
+                toastr.error('Please answer this question');
+            }
 
         });
         $(document).on("click",".previous",function() {
-            // alert("click");
+  
             $('.main2.active').addClass('d-none').removeClass('active').prev().prev().removeClass('d-none').addClass('active');
             $('.main3.active2').addClass('d-none').removeClass('active2').prev().prev().removeClass('d-none').addClass('active2');
             

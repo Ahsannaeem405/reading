@@ -13,6 +13,33 @@
           -webkit-user-select: none;
         }
 
+
+        /* (A) FULL SCREEN WRAPPER */
+        #spinner {
+        position: fixed;
+        top: 0; left: 0; z-index: 9999;
+        width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        transition: opacity 0.2s;
+        }
+        
+        /* (B) CENTER LOADING SPINNER */
+        #spinner img {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%);
+        }
+        
+        /* (C) SHOW & HIDE */
+        #spinner {
+        visibility: hidden;
+        opacity: 0;
+        }
+        #spinner.show {
+        visibility: visible;
+        opacity: 1;
+        }
+
     </style>
 
 
@@ -24,9 +51,17 @@
     <script src="{{asset('userSide/assets/js/textshadow.js')}}"></script>
 
     <script>
+        function show () {
+        document.getElementById("spinner").classList.add("show");
+        }
+        function hide () {
+        document.getElementById("spinner").classList.remove("show");
+        }
+        
+
         $(function () {
             var first = 0;
-
+            
 
             $("#jquerybuddy").lettering();
 
@@ -59,7 +94,7 @@
                     }
 
                     // Call itself recurssively
-                    fun1 = setTimeout(randomBlurize, 10);
+                    fun1 = randomBlurize();
                 }
             }// Call once
             randomBlurize();
@@ -104,14 +139,31 @@
 
 
         });
+        
     </script>
+
+    <div id="spinner">
+    <img src="{{asset('userSide/assets/img/loader7.gif')}}"/>
+    </div>
 
     <form style="background-color: #c9faf3" action="{{url('start/story/questions/'.$story->id.'')}}">
         <div class="container">
-
+        <!-- <button type="button">re read</button> -->
 
             <input type="hidden" name="time" id="spend_time">
             <div class="row">
+
+                <div class="col-lg-12">
+                    <div id="reread" reeread="{{$story->reread}}" class="buttons" style="position:absolute;bottom: 25px;width: 100%">
+
+                        <div class="right-btn" style="display: inline-block;float: right">
+                            <input type="button" class="btn btn-success readbtnn" style="bottom: -133px;left: -14px;border-radius: 0px 25px 0px 0px;background: #35922d !important; height: 62px;" value="Re Read {{$story->reread}}">
+
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="col-lg-12 mt-5 p-0">
                     <div class="text p-3"
                          style="background-color: #46a7b8;border-radius: 25px 25px 0px 0px;border-bottom: 1px solid #31b48f">
@@ -126,7 +178,7 @@
                     <div class="row">
 
                         <div class="col-lg-12 d-inline-block "
-                             style="padding: 0px !important; height: 700px;background-color: lightgray;border-radius: 0px 0px 25px 25px">
+                             style="padding: 0px !important; height: 805px;background-color: lightgray;border-radius: 0px 0px 25px 25px">
 
                             <div class="inner-row text-center">
                                 <div class="row "
@@ -171,20 +223,57 @@
 
 
     <script>
-
-
+        show();
         $(document).ready(function () {
-            var start = 1;
+            hide ();
+            var sessionsertt = '@Session["spend_time"]'!= null; 
+            if(sessionsertt == true)
+            {
+                let spend_time = sessionStorage.getItem("spend_time");
+                let remainreade = sessionStorage.getItem("remainread");
 
+                if(spend_time != null)
+                {
+                    var btnval = $('#reread').find('.readbtnn').val('Re read ' + remainreade);
+                    var start = spend_time;
+                    $('#reread').attr('reeread', remainreade);
+                    
+                    var er = sessionStorage.removeItem('spend_time');
+                    sessionStorage.removeItem('remainread');
+                }
+                else{
+                    var start = 1;
+                }
+            }else{
+                
+            }
+
+            
             setInterval(function () {
-
-
                 $('#spend_time').val(start++);
-
-
             }, 1000);
 
+            
+        });
 
+        $(document).on("click","#reread",function() {
+            
+            var remainread = $(this).attr('reeread');
+            if(remainread>0)
+            {
+                remainread--;
+                var spend_time = $('#spend_time').val();
+                
+                // alert(remainread);
+                // alert(spend_time);
+                // var btnval = $(this).find('.readbtnn').val('Re read ' + remainread);
+
+                sessionStorage.setItem("spend_time", spend_time);
+                sessionStorage.setItem("remainread", remainread);
+                let personName = sessionStorage.getItem("remainread");
+                // alert(personName);
+                location.reload();
+            }
         });
     </script>
 

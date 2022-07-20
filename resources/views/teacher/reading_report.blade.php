@@ -59,7 +59,7 @@
 
                                             <div class="q_1 ">
                                                 <b><span>Question# {{$count}}:</span></b>
-                                                <span><input type="hidden" value="{{$question->question}}" name="question[]">{{$question->question}}?</span>
+                                                <span><input type="hidden" value="{{$question->question}}" name="question[]">{{$question->question}}?[{{$question->catgname->name}}]</span>
                                                 <input type="hidden" name="q_id[]" value="{{$question->id}}">
                                                 <div class="bottom mt-5 ml-lg-4">
                                                     <div class="row">

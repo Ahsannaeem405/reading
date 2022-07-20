@@ -33,9 +33,11 @@ class LoginController extends Controller
         {
             return 'admin/home';
         }
-        else
+        elseif(Auth::user()->role== 'student')
         {
-            return '/';
+            return 'students/dashboard';
+        }else{
+            return '/teacher/Students';
         }
     }
 
