@@ -98,6 +98,15 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function (){
     Route::get('readings/story/edit/{id}',[\App\Http\Controllers\AdminController::class,'story_edit']);
     Route::post('readings/story/update/{id}',[\App\Http\Controllers\AdminController::class,'story_update']);
 
+    // quil connect
+
+    Route::get('readings/quilconnect',[\App\Http\Controllers\AdminController::class,'quilconnect_index']);
+    Route::get('readings/quilconnect/add',[\App\Http\Controllers\AdminController::class,'quilcon_add']);
+    Route::post('readings/quilconnect/save',[\App\Http\Controllers\AdminController::class,'quilcon_save']);
+    Route::get('readings/quilconnect/edit/{id}',[\App\Http\Controllers\AdminController::class,'quilcon_edit']);
+    
+    // 
+
     Route::view('/vocabulary/words','admin.vocabulary.words');
     Route::view('/vocabulary/add/question','admin.vocabulary.question');
 

@@ -15,6 +15,12 @@ class reading extends Model
       return  $this->hasMany('App\Models\storyQuestion','story_id','id');
     }
 
+    public function quil_question()
+    {
+
+      return  $this->hasMany('App\Models\QuilContQuestion','quilconct_id','id');
+    }
+
 
     public function user()
     {

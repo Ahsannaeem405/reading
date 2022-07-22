@@ -38,9 +38,9 @@ class RegisterController extends Controller
         }
         elseif(Auth::user()->role== 'student')
         {
-            return '/students/dashboard';
+            return 'students/dashboard';
         }else{  
-            return '/';
+            return 'students/dashboard';
         }
     }
 

@@ -97,7 +97,8 @@
 <script src="{{ asset('admin/app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
 {{--    <script src="{{ asset('admin/js/scripts/forms/select/form-select2.js')}}"></script>--}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script><!-- javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<!-- javascript -->
 
 
 

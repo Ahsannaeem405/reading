@@ -56,6 +56,9 @@
                     <li class={{ Request::is('admin/readings/story')? 'active' : '' }} ><a href="{{url('admin/readings/story')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">story</span></a>
                     </li>
 
+                    <li class={{ Request::is('admin/readings/quilconnect')? 'active' : '' }} ><a href="{{url('admin/readings/quilconnect')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">quil connent</span></a>
+                    </li>
+
                 </ul>
 
             </li>
