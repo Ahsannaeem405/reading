@@ -18,20 +18,42 @@ Route::get('/', function () {
 });
 
 Route::view('about','userSide.about');
-Route::get('/students/dashboard',[\App\Http\Controllers\userDashboard::class,'index']);
-Route::get('students/reading/report/{id}',[\App\Http\Controllers\userDashboard::class,'read_report']);
-Route::get('student/writing/topic/report/{id}',[\App\Http\Controllers\userDashboard::class,'writing_topic_report']);
-Route::get('student/writing/grammer/report/{id}',[\App\Http\Controllers\userDashboard::class,'writing_grammer_report']);
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/students/dashboard',[\App\Http\Controllers\userDashboard::class,'index']);
+    Route::get('students/reading/report/{id}',[\App\Http\Controllers\userDashboard::class,'read_report']);
+    Route::get('student/writing/topic/report/{id}',[\App\Http\Controllers\userDashboard::class,'writing_topic_report']);
+    Route::get('student/writing/grammer/report/{id}',[\App\Http\Controllers\userDashboard::class,'writing_grammer_report']);
+
+    Route::get('readings',[\App\Http\Controllers\userReading::class,'index']);
+    Route::get('readings/{id}',[\App\Http\Controllers\userReading::class,'cat_index']);
+    Route::get('readnow/{id}',[\App\Http\Controllers\userReading::class,'readNow']);
+    Route::get('readnow/step2/{id}',[\App\Http\Controllers\userReading::class,'readNow2']);
+    Route::get('start/story/{id}',[\App\Http\Controllers\userReading::class,'start_story']);
+    Route::get('start/story/questions/{id}',[\App\Http\Controllers\userReading::class,'start_question']);
+    Route::post('story/save/{id}',[\App\Http\Controllers\userReading::class,'story_save']);
+
+    Route::get('writing/topics',[\App\Http\Controllers\WritingTopcController::class,'topic_index']);
+    Route::get('writing/grammer',[\App\Http\Controllers\writingController::class,'index']);
+    Route::get('writing/grammer/submit',[\App\Http\Controllers\writingController::class,'grammer_submit']);
+    Route::get('writing/topics/{id}',[\App\Http\Controllers\WritingTopcController::class,'topic_detail']);
+    Route::post('writing/topics/submit/{id}',[\App\Http\Controllers\WritingTopcController::class,'topic_submit']);
+
+
+    Route::get('quil_connect',[\App\Http\Controllers\userReading::class,'quil_connect_index']);
+    Route::get('start/quil_connect/{id}',[\App\Http\Controllers\userReading::class,'quil_connect_start']);
+    Route::post('quil_connect/save/{id}',[\App\Http\Controllers\userReading::class,'quilconct_save']);
+
+
+
+});
+
+
 Route::view('contact','userSide.contact');
 Route::view('login/type','userSide.login_type');
 
-Route::get('readings',[\App\Http\Controllers\userReading::class,'index']);
-Route::get('readings/{id}',[\App\Http\Controllers\userReading::class,'cat_index']);
-Route::get('readnow/{id}',[\App\Http\Controllers\userReading::class,'readNow']);
-Route::get('readnow/step2/{id}',[\App\Http\Controllers\userReading::class,'readNow2']);
-Route::get('start/story/{id}',[\App\Http\Controllers\userReading::class,'start_story']);
-Route::get('start/story/questions/{id}',[\App\Http\Controllers\userReading::class,'start_question']);
-Route::post('story/save/{id}',[\App\Http\Controllers\userReading::class,'story_save']);
+
 Route::view('vocabulary','userSide.vocabulary.vocabulary');
 Route::view('vocabulary/step2','userSide.vocabulary.vocabulary2');
 Route::view('vocabulary/step3','userSide.vocabulary.vocabulary3');
@@ -41,11 +63,7 @@ Route::view('vocabulary/step5','userSide.vocabulary.vocabulary5');
 
 
 Route::view('writing','userSide.writing.writing');
-Route::get('writing/topics',[\App\Http\Controllers\WritingTopcController::class,'topic_index']);
-Route::get('writing/grammer',[\App\Http\Controllers\writingController::class,'index']);
-Route::get('writing/grammer/submit',[\App\Http\Controllers\writingController::class,'grammer_submit']);
-Route::get('writing/topics/{id}',[\App\Http\Controllers\WritingTopcController::class,'topic_detail']);
-Route::post('writing/topics/submit/{id}',[\App\Http\Controllers\WritingTopcController::class,'topic_submit']);
+
 
 
 
@@ -84,6 +102,12 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function (){
     Route::get('readings/category/del/{id}',[\App\Http\Controllers\CategoryController::class,'del']);
     Route::post('readings/category/update/{id}',[\App\Http\Controllers\CategoryController::class,'update']);
 
+    Route::get('readings/joining_word',[\App\Http\Controllers\AdminController::class,'joining_word']);
+    Route::post('readings/joining_word/save',[\App\Http\Controllers\AdminController::class,'joining_word_save']);
+    Route::post('readings/joining_word/update/{id}',[\App\Http\Controllers\AdminController::class,'joining_word_update']);
+    Route::get('readings/joining_word/del/{id}',[\App\Http\Controllers\AdminController::class,'joining_word_del']);
+
+
     Route::get('readings/question_category',[\App\Http\Controllers\CategoryController::class,'question_category']);
     Route::post('readings/question_category/save',[\App\Http\Controllers\CategoryController::class,'quescatg_save']);
     Route::post('readings/question_category/update/{id}',[\App\Http\Controllers\CategoryController::class,'quescatg_update']);
@@ -104,6 +128,8 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function (){
     Route::get('readings/quilconnect/add',[\App\Http\Controllers\AdminController::class,'quilcon_add']);
     Route::post('readings/quilconnect/save',[\App\Http\Controllers\AdminController::class,'quilcon_save']);
     Route::get('readings/quilconnect/edit/{id}',[\App\Http\Controllers\AdminController::class,'quilcon_edit']);
+    Route::post('readings/quilconnect/update/{id}',[\App\Http\Controllers\AdminController::class,'quilcon_update']);
+
     
     // 
 

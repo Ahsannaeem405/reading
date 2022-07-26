@@ -1,7 +1,7 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="html/ltr/vertical-menu-template/index.html">
+            <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ url('admin/home') }}">
                     <div class="" ></div>
                     <h2 class="brand-text mb-0">{{Auth::user()->name}}</h2>
                 </a></li>
@@ -57,6 +57,9 @@
                     </li>
 
                     <li class={{ Request::is('admin/readings/quilconnect')? 'active' : '' }} ><a href="{{url('admin/readings/quilconnect')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">quil connent</span></a>
+                    </li>
+
+                    <li class={{ Request::is('admin/readings/joining_word')? 'active' : '' }} ><a href="{{url('admin/readings/joining_word')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">joining word</span></a>
                     </li>
 
                 </ul>

@@ -10,6 +10,7 @@ use App\Models\reading;
 use App\Models\storyQuestion;
 use App\Models\storyQuestionDetail;
 use App\Models\User;
+use App\Models\JoiningWord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -466,10 +467,75 @@ class AdminController extends Controller
 
     public function quilcon_edit($id)
     {
+        // dd('');
         $reading=reading::find($id);
         $category=category::all();
         // $Quest_category=QuestCategory::all();
-        return view('admin.reading.storyEdit',compact('reading','category'));
+        return view('admin.reading.quilconnect_Edit',compact('reading','category'));
     }
+
+    public function quilcon_update($id,Request $request)
+        {
+
+            $reading =reading::find($id);
+            $reading->story_title = $request->story_title;
+            $reading->writer_name = $request->writer_name;
+            $reading->cat_id = $request->cat;
+
+
+            $reading->update();
+
+            $question=QuilContQuestion::where('quilconct_id',$reading->id)->delete();
+
+            for ($i = 0; $i < count($request->sentence1); $i++) {
+                if($request->sentence1[$i] !=Null AND $request->sentence2[$i] !=Null AND $request->answer[$i] !=Null AND $request->point[$i] !=Null )
+                {
+                    $question = new QuilContQuestion();
+                    $question->first_sentence = $request->sentence1[$i];
+                    $question->second_sentence = $request->sentence2[$i];
+                    $question->answer = $request->answer[$i];
+                    $question->points = $request->point[$i];
+                    $question->quilconct_id = $reading->id;
+                    $question->user_id = auth()->user()->id;
+                    $question->save();
+                   
+                }
+            }
+            return redirect('admin/readings/quilconnect')->with('success','Quil connect updated successfully');
+        }
+    public function joining_word()
+        {
+            // dd('');
+    
+            $word=JoiningWord::all();
+    
+            return view('admin.reading.joining_word',compact('word'));
+        }
+
+    public function joining_word_save(Request $request)
+        {
+
+            $word=new JoiningWord();
+            $word->word=$request->name;
+            $word->save();
+    
+            return redirect('admin/readings/joining_word')->with('success','Joining word added successfully');
+        }
+    public function joining_word_update(Request $request)
+        {
+
+            $word=JoiningWord::find($request->id);
+            $word->word=$request->name;
+            $word->update();
+    
+            return redirect('admin/readings/joining_word')->with('success','Joining word updated successfully');
+        }    
+    public function joining_word_del($id)
+    {
+        $word=JoiningWord::find($id)->delete();
+        return redirect('admin/readings/joining_word')->with('success','Joining word deleted successfully');
+
+    }
+
 }
 

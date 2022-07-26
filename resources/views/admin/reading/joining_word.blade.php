@@ -6,21 +6,20 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Joining words</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                   <form method="post" action="{{url('admin/readings/category/save')}}" enctype='multipart/form-data'>
+                   <form method="post" action="{{url('admin/readings/joining_word/save')}}" enctype='multipart/form-data'>
                         @csrf
                         <div class="row">
                            <div class="col-lg-12">
-                                <lable>Category Name</lable>
+                                <lable>Joining word</lable>
                                <input type="text" name="name" required  class="form-control mb-2" placeholder="Category Name">
-                               <lable>Category Image</lable>
-                               <input type="file" name="image" required  class="form-control mb-2" placeholder="Category Image">
-                               <input type="submit" class="btn btn-primary" value="submit">
+                               
+                               <input type="submit" style="border-color: #4839EB !important;background-color: #7367F0 !important;color: white;padding: 10px;border-radius: 5px;border: none" value="submit">
                            </div>
 
                            
@@ -45,7 +44,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header" data-toggle="modal" data-target="#exampleModal">
-                        <h4 class="card-title">Category</h4>
+                        <h4 class="card-title">Joining words</h4>
                         <input type="button" class="btn btn-primary"  value=" ADD">
 
                     </div>
@@ -73,12 +72,12 @@
                                     <tbody>
 
                                     @php $count=1; @endphp
-                                    @foreach($category as $cat)
+                                    @foreach($word as $cat)
                                     <tr>
                                         <td>{{$count++}}</td>
-                                        <td>{{$cat->name}}</td>
+                                        <td>{{$cat->word}}</td>
 
-                                        <td><a data-toggle="modal" data-target="#exampleModal{{$cat->id}}" ><i style="color: blue;font-size: 20px" class="fa fa-edit"></i></a><a href="{{url('admin/readings/category/del/'.$cat->id.'')}}" onclick="return confirm('Are you sure you want to Remove?');"><i style="color: red;font-size: 20px"  class="fa fa-trash p-2"></i></a></td>
+                                        <td><a data-toggle="modal" data-target="#exampleModal{{$cat->id}}" ><i style="color: blue;font-size: 20px" class="fa fa-edit"></i></a><a href="{{url('admin/readings/joining_word/del/'.$cat->id.'')}}" onclick="return confirm('Are you sure you want to Remove?');"><i style="color: red;font-size: 20px"  class="fa fa-trash p-2"></i></a></td>
                                     </tr>
 
 
@@ -88,20 +87,19 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add Joining Word</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form method="post" action="{{url('admin/readings/category/update/'.$cat->id.'')}}" enctype='multipart/form-data'>
+                                                    <form method="post" action="{{url('admin/readings/joining_word/update/'.$cat->id.'')}}" enctype='multipart/form-data'>
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <lable>Category Name</lable>
-                                                                <input type="text" name="name" required value="{{$cat->name}}" class="form-control mb-2" placeholder="Category Name">
-                                                                <lable>Category Image</lable>                                                
-                                                                <input type="file" name="image" required value="{{$cat->image}}" class="form-control mb-2" placeholder="Category Image">
+                                                                <input type="text" name="name" required value="{{$cat->word}}" class="form-control mb-2" placeholder="Category Name">
+                                                               
                                                                 <input type="submit" style="border-color: #4839EB !important;background-color: #7367F0 !important;color: white;padding: 10px;border-radius: 5px;border: none" value="submit">
                                                             </div>
 
@@ -128,5 +126,14 @@
         </div>
     </section>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+@if(Session::has('success'))
+    toastr.success('{{ Session::get('success') }}');
+
+@endif
+</script>
 
 @endsection

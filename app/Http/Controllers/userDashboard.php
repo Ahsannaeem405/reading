@@ -15,7 +15,8 @@ class userDashboard extends Controller
     {
 
 
-        $reading=reading::where('user_id',\Auth::user()->id)->where('type','user')->orderBy('id','DESC')->get();
+        $reading=reading::where('user_id',\Auth::user()->id)->where('type','user')->orWhere('type','quilconct_user')->orderBy('id','DESC')->get();
+        // dd($reading);
 
         $writing_topic=topicSubmit::where('user_id',\Auth::user()->id)->orderBy('id','DESC')->get();
         $writing_grammer=grammerSubmit::where('user_id',\Auth::user()->id)->orderBy('id','DESC')->get();

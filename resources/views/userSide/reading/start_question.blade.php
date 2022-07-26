@@ -45,7 +45,7 @@
                                                 <span><input type="hidden" value="{{$question->question}}"
                                                         name="question[]">{{$question->question}}?</span>
                                                 <input type="hidden" name="q_id[]" value="{{$question->id}}">
-                                                <input type="text" name="q_catg_id[]" value="{{$question->catg_quest_id}}">
+                                                <input type="hidden" name="q_catg_id[]" value="{{$question->catg_quest_id}}">
                                                 <div class="bottom mt-5 ml-lg-4">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-sm-12">

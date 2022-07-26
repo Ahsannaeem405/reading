@@ -6,6 +6,9 @@ use App\Models\category;
 use App\Models\reading;
 use App\Models\storyQuestion;
 use App\Models\storyQuestionDetail;
+use App\Models\QuilContQuestion;
+use App\Models\JoiningWord;
+
 use Illuminate\Http\Request;
 use Session;
 
@@ -55,7 +58,7 @@ class userReading extends Controller
     public function story_save($id,Request $request)
     {
 
-// dd(Session::get('spend_time'));
+        // dd(Session::get('spend_time'));
         $reading = new reading();
 
 
@@ -157,6 +160,67 @@ class userReading extends Controller
 
         $category=category::all();
         return view('userSide.reading.reading',compact('story','category'));
+    }
+
+    public function quil_connect_index()
+    {
+
+        $story=reading::orderBy('id','DESC')->where('type','quilconct_admin')->get();
+
+        $category=category::all();
+        return view('userSide.reading.quil_connect',compact('story','category'));
+    }
+    public function quil_connect_start($id,Request $request)
+    {
+        // dd($id);
+        $story=reading::find($id);
+        // dd($story->quil_question);
+        $words = JoiningWord::all();
+        return view('userSide.reading.quilconct_start',compact('story','words'));
+    }
+
+
+
+    public function quilconct_save($id,Request $request)
+    {
+
+        $reading = new reading();
+        $reading->story_title = $request->story_title;
+        $reading->user_id = \Auth::user()->id;
+        $reading->type ='quilconct_user';
+        $spend_time = $request->spend_time;
+        $spend_time=  gmdate("i:s", $spend_time);
+        $reading->spend_time = $spend_time;
+        $reading->cat_id = $request->cat_id;
+        
+        $reading->save();
+        $total = 0;
+        $obtain = 0;
+        for ($i = 0; $i < count($request->sentence1); $i++) {
+            $total = $total+$request->point[$i];
+            if($request->answer[$i] == $request->user_answer[$i])
+            {
+                $obtain = $obtain + $request->point[$i];
+            }
+            $question = new QuilContQuestion();
+            $question->first_sentence = $request->sentence1[$i];
+            $question->second_sentence = $request->sentence2[$i];
+            $question->points = $request->point[$i];
+            $question->answer = $request->answer[$i];
+            $question->quilconct_id = $reading->id;
+            $question->add_by = 'user';
+            $question->user_id = auth()->user()->id;
+            $question->user_answer = $request->user_answer[$i];
+            $question->save();
+            $read = reading::find($reading->id);
+            $read->total = $total;
+            $read->obtain = $obtain;
+            $read->update();
+            
+        }
+
+        return redirect('students/dashboard');
+
     }
 
 }

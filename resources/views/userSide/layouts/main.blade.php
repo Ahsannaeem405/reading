@@ -83,9 +83,17 @@
             <div class="header-bottom header-sticky">
                 <!-- Logo -->
                 <div class="logo d-none d-lg-block" style="padding: 0px !important;">
+                @if(Auth::check())
                     <a href="{{url('/students/dashboard')}}"> <img style="padding: 0px !important;
-    width: 113px !important;
-    height: 89px !important;" src="{{asset('userSide/assets/img/logo/logo5.jpg')}}" alt=""></a>
+                    width: 113px !important;
+                    height: 89px !important;" src="{{asset('userSide/assets/img/logo/logo5.jpg')}}" alt=""></a>
+
+
+                @else
+                <a href="{{url('/login/type')}}"> <img style="padding: 0px !important;
+                    width: 113px !important;
+                    height: 89px !important;" src="{{asset('userSide/assets/img/logo/logo5.jpg')}}" alt=""></a>
+                @endif
                 </div>
                 <div class="container">
                     <div class="menu-wrapper">
@@ -118,6 +126,7 @@
                                     @if(Auth::check())
                                         @if(Auth::user()->role =='student')
                                             <li><a href="{{url('/readings')}}">Reading</a></li>
+                                            <li><a href="{{url('/quil_connect')}}">quil connect</a></li>
                                             <li><a href="{{url('/writing')}}">Writing</a></li>
                                             <li><a href="{{url('/vocabulary')}}">vocabulary </a></li>
 

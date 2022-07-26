@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/css/pages/data-list-view.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/css/sweetalert2.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/vendors/css/extensions/toastr.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/vendors/css/vendors.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/vendors/css/extensions/tether-theme-arrows.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/vendors/css/extensions/tether.min.css') }}">
@@ -35,6 +34,8 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css" id="theme-styles">
     <link rel="stylesheet" type="text/css" href="{{asset('admin//app-assets/css/plugins/forms/wizard.css')}}">
 
+
+    
     <!-- END: Page CSS-->
     @yield('css')
 
@@ -94,7 +95,6 @@
 <script src="{{ asset('admin/app-assets/js/scripts/components.js') }}"></script>
 <script src="{{ asset('admin/app-assets/js/sweetalert.min.js') }}"></script>
 <script src="{{ asset('admin/app-assets/js/scripts/ui/data-list-view.js') }}"></script>
-<script src="{{ asset('admin/app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
 {{--    <script src="{{ asset('admin/js/scripts/forms/select/form-select2.js')}}"></script>--}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
@@ -108,6 +108,7 @@
 
 <script>
     $(document).ready(function(){
+        
         $(function () {
             $(".datepicker").datepicker({
                 autoclose: true,

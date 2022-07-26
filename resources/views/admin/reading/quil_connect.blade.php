@@ -27,7 +27,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Picture</th>
+                                        
                                         <th>Name</th>
                                         <th>Questions</th>
                                         <th>Writer</th>
@@ -42,7 +42,7 @@
                                     @foreach($reading as $read)
                                     <tr>
                                         <td>{{$count++}}</td>
-                                        <td><img style="width: 100px;height: 50px" src="{{asset('uploads/appsetting/'.$read->story_image.'')}}"></td>
+                                        
                                         <td>{{$read->story_title}}</td>
                                         <td>{{$read->quil_question->count()}}</td>
                                         <td>{{$read->writer_name}}</td>
