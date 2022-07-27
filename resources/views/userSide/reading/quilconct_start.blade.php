@@ -233,6 +233,7 @@
             }else{
                 
                 toastr.error('Please answer this question');
+                
             }
 
         });

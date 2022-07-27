@@ -42,6 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('quil_connect',[\App\Http\Controllers\userReading::class,'quil_connect_index']);
+    Route::get('quil_connect/{id}',[\App\Http\Controllers\userReading::class,'quilconct_cat_index']);
+
     Route::get('start/quil_connect/{id}',[\App\Http\Controllers\userReading::class,'quil_connect_start']);
     Route::post('quil_connect/save/{id}',[\App\Http\Controllers\userReading::class,'quilconct_save']);
 

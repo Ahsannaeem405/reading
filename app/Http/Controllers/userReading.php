@@ -170,6 +170,15 @@ class userReading extends Controller
         $category=category::all();
         return view('userSide.reading.quil_connect',compact('story','category'));
     }
+
+    public function quilconct_cat_index($id)
+    {
+// dd('j');
+        $story=reading::where('cat_id',$id)->where('type','quilconct_admin')->get();
+
+        $category=category::all();
+        return view('userSide.reading.quil_connect',compact('story','category'));
+    }
     public function quil_connect_start($id,Request $request)
     {
         // dd($id);

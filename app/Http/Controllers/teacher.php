@@ -17,20 +17,20 @@ class teacher extends Controller
 
  public function report($id)
  {
-     $reading=reading::where('user_id',$id)->where('type','user')->orderBy('id','DESC')->get();
+     $reading=reading::where('user_id',$id)->where('type','user')->orWhere('type','quilconct_user')->orderBy('id','DESC')->get();
      $writing_topic=topicSubmit::where('user_id',$id)->orderBy('id','DESC')->get();
-
-     return view('teacher.report',compact('reading','writing_topic'));
+    $user = User::find($id);
+     return view('teacher.report',compact('reading','writing_topic','user'));
  }
 
  public function reading_report($id)
  {
 
-     $reading=reading::find($id);
+    $reading=reading::find($id);
     $reading->read_teacher=1;
-$reading->update();
-     $student_id=$reading->user_id;
-     return view('teacher.reading_report',compact('reading','student_id'));
+    $reading->update();
+    $student_id=$reading->user_id;
+    return view('teacher.reading_report',compact('reading','student_id'));
  }
 
  public function writing_topic_report($id)
