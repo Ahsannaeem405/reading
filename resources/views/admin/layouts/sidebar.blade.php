@@ -56,17 +56,45 @@
                     <li class={{ Request::is('admin/readings/story')? 'active' : '' }} ><a href="{{url('admin/readings/story')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">story</span></a>
                     </li>
 
-                    <li class={{ Request::is('admin/readings/quilconnect')? 'active' : '' }} ><a href="{{url('admin/readings/quilconnect')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">quil connent</span></a>
+                    
+                </ul>
+
+            </li>
+
+            <!--  -->
+            <li class={{ Request::is('admin/quilconnect')? 'active' : '' }} ><a href=""><i class="feather icon-user"></i><span class="menu-title" data-i18n="profile">Connect</span></a>
+                <ul class="menu-content">
+
+                    <li class={{ Request::is('')? 'active' : '' }} ><a href="{{url('admin/readings/category')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Category</span></a>
                     </li>
 
-                    <li class={{ Request::is('admin/readings/joining_word')? 'active' : '' }} ><a href="{{url('admin/readings/joining_word')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">joining word</span></a>
+                    <li class={{ Request::is('admin/readings/quilconnect')? 'active' : '' }} ><a href="{{url('admin/readings/quilconnect')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Connect</span></a>
+                    </li>
+
+                    <li class={{ Request::is('admin/readings/joining_word')? 'active' : '' }} ><a href="{{url('admin/readings/joining_word')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Joining word</span></a>
                     </li>
 
                 </ul>
 
             </li>
+            <!--  -->
 
+            <li class={{ Request::is('admin/proffread')? 'active' : '' }} ><a href=""><i class="feather icon-user"></i><span class="menu-title" data-i18n="profile">Proofread</span></a>
+                <ul class="menu-content">
 
+                    <li class={{ Request::is('')? 'active' : '' }} ><a href="{{url('admin/readings/category')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Category</span></a>
+                    </li>
+
+                    <li class={{ Request::is('admin/readings/proofread')? 'active' : '' }} ><a href="{{url('admin/readings/proofread')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Proofread</span></a>
+                    </li>
+
+                    
+
+                </ul>
+
+            </li>
+            
+            <!--  -->
             <li class={{ Request::is('admin/vocabulary')? 'active' : '' }} ><a href=""><i class="feather icon-user"></i><span class="menu-title" data-i18n="profile">Vocabulary</span></a>
                 <ul class="menu-content">
 

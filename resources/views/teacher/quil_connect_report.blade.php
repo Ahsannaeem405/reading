@@ -50,9 +50,9 @@
                                 <div class="bottom mt-5 ml-lg-4">
                                     <div class="row">
                                         <div class="col-lg-12 col-sm-12">
-                                            <p class="m-0">{{$question->first_sentence}}.</p>
-                                            <p>{{$question->second_sentence}}.</p>
-                                            <p>{{$question->user_answer}}.
+                                            <p class="m-0">{{$question->first_sentence}}</p>
+                                            <p>{{$question->second_sentence}}</p>
+                                            <p>{{$question->user_answer}}
                                                 <span
                                                     style="padding: 1px; color: white; @if($question->user_answer == $question->answer) background: green; @else background: red; @endif"
                                                     class="px-1"><i

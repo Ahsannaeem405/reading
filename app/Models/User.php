@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return     $this->hasMany('App\Models\User','teacher_id','id');
     }
+
+    public function readings()
+    {
+        return     $this->hasMany('App\Models\reading','user_id','id')->where('read_teacher',0);
+    }
 }

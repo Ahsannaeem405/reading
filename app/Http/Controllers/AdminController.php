@@ -376,8 +376,22 @@ class AdminController extends Controller
 
     public function story_del($id)
     {
-        $read=reading::find($id)->delete();
-        return redirect('admin/readings/story')->with('success','Story Deleted successfully');
+        $read=reading::find($id);
+        if($read->type == 'admin')
+        {
+            $read->delete();
+            return redirect('admin/readings/story')->with('success','Story Deleted successfully');
+        }
+        elseif($read->type == 'quilconct_admin'){
+            $read->delete();
+            return redirect('admin/readings/quilconnect')->with('success','Connect Deleted successfully');
+        }
+        else{
+            $read->delete();
+            return redirect('admin/readings/proofread')->with('success','Proofread Deleted successfully');
+        }
+        
+       
 
 
     }
@@ -415,29 +429,6 @@ class AdminController extends Controller
         $reading->cat_id = $request->cat;
         $reading->type = "quilconct_admin";
 
-        if ($request->hasfile('story_image')) {
-            $file = $request->file('story_image');
-            $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/appsetting/', $filename);
-
-            $reading->story_image = $filename;
-
-        }
-
-        if ($request->hasfile('writer_image')) {
-            $file = $request->file('writer_image');
-            $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/appsetting/', $filename);
-
-            $reading->writer_image = $filename;
-
-        }
-
-
-     
-
         $reading->user_id = \Auth::user()->id;
 
         $reading->save();
@@ -462,7 +453,7 @@ class AdminController extends Controller
                 $question->save();
             }
         }
-        return redirect('admin/readings/quilconnect')->with('success','quil connect added successfully');
+        return redirect('admin/readings/quilconnect')->with('success','Connect added successfully');
     }
 
     public function quilcon_edit($id)
@@ -501,7 +492,7 @@ class AdminController extends Controller
                    
                 }
             }
-            return redirect('admin/readings/quilconnect')->with('success','Quil connect updated successfully');
+            return redirect('admin/readings/quilconnect')->with('success','Connect updated successfully');
         }
     public function joining_word()
         {

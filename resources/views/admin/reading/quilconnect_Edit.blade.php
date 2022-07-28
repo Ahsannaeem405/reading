@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Add Story </h4>
+                        <h4 class="card-title">Edit Connect </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -19,7 +19,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="firstName3">
-                                                    Title for quil connect
+                                                    Title for connect
                                                 </label>
                                                 <input type="text" value="{{$reading->story_title}}" class="form-control required" id="firstName3" name="story_title">
                                             </div>
@@ -27,7 +27,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="lastName3">
-                                                    Quil connect writer name
+                                                    Connect writer name
                                                 </label>
                                                 <input type="text" class="form-control required" id="lastName3" value="{{$reading->writer_name}}" name="writer_name">
                                             </div>
@@ -62,7 +62,7 @@
                                 <!-- Step 3 -->
                                 <h6><i class="step-icon feather icon-briefcase"></i> Step 2</h6>
                                 <fieldset>
-                                    <input type="button" class="btn btn-primary waves-input-wrapper waves-effect waves-light mb-2" id="add_ques" value="Add Question?">
+                                    <input type="button" class=" btn-primary waves-input-wrapper waves-effect waves-light mb-2" id="add_ques" value="Add Question">
                                     <div class="container-fluid" id="append_data">
 
                                         @php $count=1; @endphp

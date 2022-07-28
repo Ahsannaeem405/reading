@@ -198,7 +198,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap hero-cap2 text-center">
-                                <h2>Quill Connect</h2>
+                                <h2>Connect</h2>
                             </div>
                         </div>
                     </div>
@@ -216,7 +216,7 @@
                     <div class="col">
                         <div class="bbb_main_container">
                             <div class="bbb_viewed_title_container">
-                                <h3 class="bbb_viewed_title">Quill Connect Categories</h3>
+                                <h3 class="bbb_viewed_title">Connect Categories</h3>
                                 <div class="bbb_viewed_nav_container">
                                     <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
                                     <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
@@ -277,11 +277,30 @@
 </div>
     </main>
 
+
+    <!--  -->
+
+  <textarea  class="ckeditor " name="" id="" cols="30" rows="10">sdkafjksdafjsdkf</textarea>
+
+
+    <!--  -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="https://nightly.ckeditor.com/full/ckeditor.js"></script> -->
+<!-- <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> -->
+<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+    .create( document.querySelector( '.ckeditor' ) )
+    
+    .catch( error => {
+    console.error( error );
+    } );
+</script>
     <script>
         $(document).ready(function()
         {
-
 
             if($('.bbb_viewed_slider').length)
             {
@@ -326,6 +345,7 @@
 
 
         });
+        
     </script>
 
 @endsection

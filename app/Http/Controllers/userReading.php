@@ -232,4 +232,13 @@ class userReading extends Controller
 
     }
 
+    public function proofreading()
+    {
+        dd('l');
+        $story=reading::orderBy('id','DESC')->where('type','proofread_admin')->get();
+
+        $category=category::all();
+        return view('userSide.reading.quil_connect',compact('story','category'));
+    }
+
 }

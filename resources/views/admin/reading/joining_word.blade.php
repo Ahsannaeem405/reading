@@ -16,8 +16,8 @@
                         @csrf
                         <div class="row">
                            <div class="col-lg-12">
-                                <lable>Joining word</lable>
-                               <input type="text" name="name" required  class="form-control mb-2" placeholder="Category Name">
+                                
+                               <input type="text" name="name" required  class="form-control mb-2" placeholder="Joining word">
                                
                                <input type="submit" style="border-color: #4839EB !important;background-color: #7367F0 !important;color: white;padding: 10px;border-radius: 5px;border: none" value="submit">
                            </div>
@@ -97,8 +97,8 @@
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-lg-12">
-                                                                <lable>Category Name</lable>
-                                                                <input type="text" name="name" required value="{{$cat->word}}" class="form-control mb-2" placeholder="Category Name">
+                                                                <lable>Joining word</lable>
+                                                                <input type="text" name="name" required value="{{$cat->word}}" class="form-control mb-2" placeholder="">
                                                                
                                                                 <input type="submit" style="border-color: #4839EB !important;background-color: #7367F0 !important;color: white;padding: 10px;border-radius: 5px;border: none" value="submit">
                                                             </div>

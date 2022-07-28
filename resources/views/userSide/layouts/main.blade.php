@@ -27,9 +27,31 @@
     <link rel="stylesheet" href="{{asset('userSide/assets/css/style.css')}}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="{{asset('userSide/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+<style>
 
+
+.carte {
+  display: none;
+}
+    
+.carte_button:hover + .carte {
+    display: block;
+    
+}
+.carte:hover{
+    display: block;
+   
+}
+.tabitm:hover {
+    background:#2d3092 !important;
+    color:white !important;
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+}
+</style>
 </head>
 <body>
+
 <!--? Preloader Start -->
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -125,10 +147,16 @@
                                     <li><a href="{{url('/contact')}}">Contact</a></li> -->
                                     @if(Auth::check())
                                         @if(Auth::user()->role =='student')
-                                            <li><a href="{{url('/readings')}}">Reading</a></li>
-                                            <li><a href="{{url('/quil_connect')}}">quil connect</a></li>
+                                            <li style="position:relative; padding: 19px; font-weight: bold; cursor:pointer;" class="carte_button">Reading</li>
+                                            
+                                            <div class="carte" style="background: lightgrey;width: 124px;line-height: 2.5;position:absolute; top:67%; z-index:5; left:46%; padding:10px; box-shadow: 1px 1px 11px 2px grey;">
+                                                <a class="d-block tabitm" href="{{url('/quil_connect')}}" style="color:black;">Connect</a>
+                                                <a class="d-block tabitm" href="{{url('/readings')}}" style="color:black;">Story</a>
+                                                <a class="d-block tabitm" href="{{url('/proofreading')}}" style="color:black;">Proofreading</a>
+                                            </div>
                                             <li><a href="{{url('/writing')}}">Writing</a></li>
                                             <li><a href="{{url('/vocabulary')}}">vocabulary </a></li>
+                                            <!-- <li><a href="{{url('/quil_connect')}}">quil connect</a></li> -->
 
                                         @endif
                                     @endif

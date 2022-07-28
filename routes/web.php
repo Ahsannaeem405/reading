@@ -43,11 +43,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('quil_connect',[\App\Http\Controllers\userReading::class,'quil_connect_index']);
     Route::get('quil_connect/{id}',[\App\Http\Controllers\userReading::class,'quilconct_cat_index']);
-
     Route::get('start/quil_connect/{id}',[\App\Http\Controllers\userReading::class,'quil_connect_start']);
     Route::post('quil_connect/save/{id}',[\App\Http\Controllers\userReading::class,'quilconct_save']);
 
+    // 
+    Route::get('proofreading',[\App\Http\Controllers\userReading::class,'proofreading']);
 
+    
 
 });
 
@@ -132,9 +134,18 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function (){
     Route::get('readings/quilconnect/edit/{id}',[\App\Http\Controllers\AdminController::class,'quilcon_edit']);
     Route::post('readings/quilconnect/update/{id}',[\App\Http\Controllers\AdminController::class,'quilcon_update']);
 
-    
     // 
 
+    Route::get('readings/proofread',[\App\Http\Controllers\ReadingController::class,'quil_proofread']);
+    Route::get('readings/proofread/add',[\App\Http\Controllers\ReadingController::class,'proofread_add']);
+    Route::post('readings/proofread/save',[\App\Http\Controllers\ReadingController::class,'proofread_save']);
+    Route::get('readings/proofread/edit/{id}',[\App\Http\Controllers\ReadingController::class,'proofread_edit']);
+    Route::post('readings/proofread/update/{id}',[\App\Http\Controllers\ReadingController::class,'proofread_update']);
+
+
+
+
+    // 
     Route::view('/vocabulary/words','admin.vocabulary.words');
     Route::view('/vocabulary/add/question','admin.vocabulary.question');
 

@@ -66,7 +66,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -77,6 +77,7 @@
                                     <tr>
                                         <td>{{$count++}}</td>
                                         <td>{{$cat->name}}</td>
+                                        <td> <img src="{{ asset('uploads/category_images/' . $cat->image) }}" alt="" style="width: auto; height: 60px;"> </td>
 
                                         <td><a data-toggle="modal" data-target="#exampleModal{{$cat->id}}" ><i style="color: blue;font-size: 20px" class="fa fa-edit"></i></a><a href="{{url('admin/readings/category/del/'.$cat->id.'')}}" onclick="return confirm('Are you sure you want to Remove?');"><i style="color: red;font-size: 20px"  class="fa fa-trash p-2"></i></a></td>
                                     </tr>

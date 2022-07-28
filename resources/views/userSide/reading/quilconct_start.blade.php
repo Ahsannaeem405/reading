@@ -26,7 +26,7 @@
             <input type="hidden" name="cat_id" value="{{ $story->cat_id }}">
             <div class="row " style="">
                 <div class="container div1 active">
-                            <h2 class="title is-3 register">Welcome to Quill Connect!</h2>
+                            <h2 class="title is-3 register">Welcome to Connect!</h2>
                             <div class="register-container" style="line-height: 40px;">
                                     <ul class="register-list">
                                         <li>Combine the sentences together into one sentence.</li>
@@ -96,9 +96,10 @@
                                                     <span><input type="hidden" value="{{$question->first_sentence}}" name="sentence1[]"></span>
                                                     <span><input type="hidden" value="{{$question->second_sentence}}" name="sentence2[]"></span>
                                                     <span><input type="hidden" value="{{$question->answer}}" name="answer[]"></span>
+                                                    <p>{{$question->answer}}</p>
                                                     <input type="hidden" name="q_id[]" value="{{$question->id}}">
-                                                    <h2>{{ $question->first_sentence }}.</h2>
-                                                    <h2>{{ $question->second_sentence }}.</h2>
+                                                    <h2>{{ $question->first_sentence }}</h2>
+                                                    <h2>{{ $question->second_sentence }}</h2>
 
                                                     <div class="cues">
                                                         @foreach($words as $word)

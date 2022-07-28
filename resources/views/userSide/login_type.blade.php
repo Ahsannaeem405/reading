@@ -27,7 +27,7 @@
                             <div class="row text-center">
 
                                 <div class="col-lg-12 m-4">
-                                    <a href="{{url('login')}}"><button style="min-width: 231px !important;" class="btn btn-primary">Studen Login </button>
+                                    <a href="{{url('login')}}"><button style="min-width: 231px !important;" class="btn btn-primary">Student Login </button>
                                     </a></div>
 
 

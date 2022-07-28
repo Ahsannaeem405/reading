@@ -9,8 +9,8 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Connect</h4>
-                      <a href="{{url('admin/readings/quilconnect/add')}}">  <input type="button" class="btn btn-primary" value="ADD"></a>
+                        <h4 class="card-title">Proofread</h4>
+                      <a href="{{url('admin/readings/proofread/add')}}">  <input type="button" class="btn btn-primary" value="ADD"></a>
                     </div>
                     @if(session()->has('success'))
                         <div class="alert alert-success">
@@ -28,8 +28,8 @@
                                     <tr>
                                         <th>#</th>
                                         
-                                        <th>Name</th>
-                                        <th>Questions</th>
+                                        <th>Title</th>
+                                        <th>Category</th>
                                         <th>Writer</th>
 
 
@@ -44,11 +44,11 @@
                                         <td>{{$count++}}</td>
                                         
                                         <td>{{$read->story_title}}</td>
-                                        <td>{{$read->quil_question->count()}}</td>
+                                        <td>{{$read->category->name}}</td>
                                         <td>{{$read->writer_name}}</td>
 
 
-                                        <td><a href="{{url('admin/readings/quilconnect/edit/'.$read->id.'')}}"><i style="color: blue;font-size: 20px" class="fa fa-edit"></i></a><a href="{{url('admin/readings/story/del/'.$read->id.'')}}" onclick="return confirm('Are you sure you want to Remove?');"><i style="color: red;font-size: 20px"   class="fa fa-trash p-2"></i></a></td>
+                                        <td><a href="{{url('admin/readings/proofread/edit/'.$read->id.'')}}"><i style="color: blue;font-size: 20px" class="fa fa-edit"></i></a><a href="{{url('admin/readings/story/del/'.$read->id.'')}}" onclick="return confirm('Are you sure you want to Remove?');"><i style="color: red;font-size: 20px"   class="fa fa-trash p-2"></i></a></td>
                                     </tr>
 
                                     @endforeach

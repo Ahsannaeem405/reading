@@ -45,7 +45,7 @@
             <td>{{$stu->name}}</td>
             <td>{{$stu->email}}</td>
             <td>{{$stu->phone}}</td>
-            <td><div style="background-color: greenyellow;width: 25px;height: 25px;border-radius: 50%;color: white;text-align: center;"><span>0</span></div></td>
+            <td><div style="background-color: green;width: 25px;height: 25px;border-radius: 50%;color: white;text-align: center;"><span>{{ $stu->readings->count() }}</span></div></td>
             <td><a href="{{url('teacher/student/report/'.$stu->id.'')}}"> <input type="button" class="btn btn-success p-3" style="border-radius: 5px" value="View Report" ></a></td>
         </tr>
         @endforeach
