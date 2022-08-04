@@ -333,17 +333,13 @@
             <div class="header-bottom header-sticky">
                 <!-- Logo -->
                 <div class="logo d-none d-lg-block" style="padding: 0px !important;">
-                @if(Auth::check())
-                    <a href="{{url('/students/dashboard')}}"> <img style="padding: 0px !important;
+                
+                     <img style="padding: 0px !important;
                     width: 113px !important;
-                    height: 89px !important;" src="{{asset('userSide/assets/img/logo/logo5.jpg')}}" alt=""></a>
+                    height: 89px !important;" src="{{asset('userSide/assets/img/logo/logo5.jpg')}}" alt="">
 
 
-                @else
-                <a href="{{url('/login/type')}}"> <img style="padding: 0px !important;
-                    width: 113px !important;
-                    height: 89px !important;" src="{{asset('userSide/assets/img/logo/logo5.jpg')}}" alt=""></a>
-                @endif
+                
                 </div>
                 <div class="container">
                     <div class="menu-wrapper">
