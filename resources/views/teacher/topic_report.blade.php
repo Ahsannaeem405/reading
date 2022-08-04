@@ -165,8 +165,8 @@ $i=1;
     $(document).ready(function(){
 
         $(".star_num").click(function(){
-        var val=$(this).attr('abc');
-   $('#stars').val(val);
+            var val=$(this).attr('abc');
+            $('#stars').val(val);
         });
     });
 </script>

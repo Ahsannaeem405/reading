@@ -62,11 +62,40 @@
                                     <div class="col-lg-3 mt-2 mt-lg-0" style="border-left: 1px solid lightgreen; ">
 
                                         @foreach($reading as $read)
+                                        @if($read->type != 'proofread_user')
                                             @php $avg=($read->obtain / $read->total)*100; @endphp
+                                            <a href="{{url('students/reading/report/'.$read->id.'')}}">
+                                                <i class="fa @if($avg>50) fa-check @else fa-times @endif mb-1" style="font-weight: bolder;color: white;border-radius:5px; @if($avg>50)background-color: greenyellow; @else background-color: orangered;  @endif padding: 5px"></i>
+                                            </a>
+                                        @else
+                                        <a href="{{url('students/reading/report/'.$read->id.'')}}">
 
-                                      <a href="{{url('students/reading/report/'.$read->id.'')}}">
-                                          <i class="fa @if($avg>50) fa-check @else fa-times @endif mb-1" style="font-weight: bolder;color: white;border-radius:5px; @if($avg>50)background-color: greenyellow; @else background-color: orangered;  @endif padding: 5px"></i>
-                                      </a>
+                                                        <i class="fa 
+                                                        @if($read->obtain ==Null) 
+                                                        fa-question 
+                                                        @else 
+                                                            @if($read->obtain >2)
+                                                            fa-check
+                                                            @else
+                                                            fa-times 
+                                                            @endif
+                                                        @endif
+                                                        mb-1 d-inline-block "
+                                                        style="font-weight: bolder;color: white;border-radius:5px;
+                                                        @if($read->obtain ==Null)background-color: orangered; 
+                                                            
+                                                        @else 
+                                                            @if($read->obtain >2)
+                                                            background-color: greenyellow;  
+
+                                                            @else
+                                                            background-color: orangered;  
+
+                                                            @endif
+                                                        @endif ;padding: 5px"></i>
+                                                    </a>
+                                        @endif
+                                      
 
                                         @endforeach
                                     </div>

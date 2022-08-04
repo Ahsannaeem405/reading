@@ -6,6 +6,7 @@ use App\Models\reading;
 use App\Models\topicSubmit;
 use App\Models\User;
 use Illuminate\Http\Request;
+use DB;
 
 class teacher extends Controller
 {
@@ -17,7 +18,8 @@ class teacher extends Controller
 
  public function report($id)
  {
-     $reading=reading::where('user_id',$id)->where('type','user')->orWhere('type','quilconct_user')->orderBy('id','DESC')->get();
+     $reading=reading::where('user_id',$id)->whereIn('type', ['user', 'quilconct_user', 'proofread_user'])->orderBy('id','DESC')->get();
+    //  dd($reading);
      $writing_topic=topicSubmit::where('user_id',$id)->orderBy('id','DESC')->get();
     $user = User::find($id);
      return view('teacher.report',compact('reading','writing_topic','user'));
@@ -50,4 +52,18 @@ $topic->update();
 
 return redirect('teacher/student/report/'.$topic->user_id.'')->with('success','Record Updated Successfully');
  }
+
+    public function proofreading_report_submit($id,Request $request)
+    {
+        // dd($request);
+    $reading=reading::find($id);
+    $reading->obtain=$request->stars;
+    $reading->update();
+    $proofread = DB::table('proofread_details')->where('proofread_id', $id)->update(['teacher_remarks' => $request->remarks]);
+    $user_id = $reading->user_id;
+
+    return redirect('teacher/student/report/'.$user_id.'')->with('success','Record Updated Successfully');
+    }
+
+
 }

@@ -63,21 +63,60 @@
 
                                             <div class="col-lg-3 mt-2 mt-lg-0"
                                                  style="border-left: 1px solid lightgreen; ">
+
                                                 @foreach($reading as $read)
-                                                @php $avg=($read->obtain / $read->total)*100; @endphp
+                                                @if($read->type != 'proofread_user')
 
-                                                <a href="{{url('teacher/student/report/reading/'.$read->id.'')}}">  <div style="display: inline-block">
+                                                    @php $avg=($read->obtain / $read->total)*100; @endphp
 
-                                                      <i class="fa @if($avg>50) fa-check @else fa-times @endif mb-1 d-inline-block "
-                                                       style="font-weight: bolder;color: white;border-radius:5px;@if($avg>50)background-color: greenyellow; @else background-color: orangered;  @endif ;padding: 5px"></i>
+                                                    <a href="{{url('teacher/student/report/reading/'.$read->id.'')}}">  <div style="display: inline-block">
 
-                                                   @if($read->read_teacher==0)
-                                                    <div  class="d-inline-block" style="margin-left:-11px;background-color: red;width: 15px;height: 15px;border-radius: 50%;color: white;text-align: center;"><sup style="color: white" >1</sup></div>
+                                                        <i class="fa @if($avg>50) fa-check @else fa-times @endif mb-1 d-inline-block "
+                                                        style="font-weight: bolder;color: white;border-radius:5px;@if($avg>50)background-color: greenyellow; @else background-color: orangered;  @endif ;padding: 5px"></i>
+
+                                                        @if($read->read_teacher==0)
+                                                        <div  class="d-inline-block" style="margin-left:-11px;background-color: red;width: 15px;height: 15px;border-radius: 50%;color: white;text-align: center;"><sup style="color: white" >1</sup></div>
+                                                        @endif
+                                                        </div>
+                                                    </a>
+                                                    
+                                                @else
+                                                    <a href="{{url('teacher/student/report/reading/'.$read->id.'')}}">  <div style="display: inline-block">
+
+                                                        <i class="fa 
+                                                        @if($read->obtain ==Null) 
+                                                        fa-question 
+                                                        @else 
+                                                            @if($read->obtain >2)
+                                                            fa-check
+                                                            @else
+                                                            fa-times 
+                                                            @endif
+                                                        @endif
+                                                        mb-1 d-inline-block "
+                                                        style="font-weight: bolder;color: white;border-radius:5px;
+                                                        @if($read->obtain ==Null)background-color: orangered; 
+                                                            
+                                                        @else 
+                                                            @if($read->obtain >2)
+                                                            background-color: greenyellow;  
+
+                                                            @else
+                                                            background-color: orangered;  
+
+                                                            @endif
+                                                        @endif ;padding: 5px"></i>
+
+                                                        @if($read->read_teacher==0)
+                                                        <div  class="d-inline-block" style="margin-left:-11px;background-color: red;width: 15px;height: 15px;border-radius: 50%;color: white;text-align: center;"><sup style="color: white" >1</sup></div>
+                                                        @endif
+                                                        </div>
+                                                    </a>
+
                                                 @endif
-                                                    </div>
-                                              </a>
                                                 @endforeach
 
+                                                
                                             </div>
                                         </div>
 

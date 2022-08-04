@@ -11,12 +11,17 @@
             <!-- story report end -->
 
 
-            @else
+            @elseif($reading->type == 'quilconct_user')
                 <!-- quill report start-->
 
                 @include('userSide.reading.report.quil_connect_report')
                 <!-- quil report end -->
             
+            @else
+                <!-- quill report start-->
+
+                @include('userSide.reading.report.proofread_report')
+                <!-- quil report end -->
             @endif
             
 

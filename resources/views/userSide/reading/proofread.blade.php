@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
     <main>
         <div class="slider-area">
             <div class="slider-height2 d-flex align-items-center">
@@ -9,7 +11,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap hero-cap2 text-center">
-                                <h2>Connect</h2>
+                                <h2>Proofread</h2>
                             </div>
                         </div>
                     </div>
@@ -27,7 +29,7 @@
                     <div class="col">
                         <div class="bbb_main_container">
                             <div class="bbb_viewed_title_container">
-                                <h3 class="bbb_viewed_title">Connect Categories</h3>
+                                <h3 class="bbb_viewed_title">Proofread Categories</h3>
                                 <div class="bbb_viewed_nav_container">
                                     <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
                                     <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
@@ -40,12 +42,10 @@
 
                                     <div class="owl-item">
                                         <div class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-
                                             <div class="bbb_viewed_content text-center">
-                                                <div class="bbb_viewed_name"><a href="{{url('quil_connect/'.$cat->id.'')}}">
+                                                <div class="bbb_viewed_name"><a href="{{url('proofreading/'.$cat->id.'')}}">
                                                     <span style="display: flex;justify-content: center;"><img src="{{ asset('uploads/category_images/'.$cat->image) }}" style="height: 70px; width: auto;"></span>{{$cat->name}}</a></div>
                                             </div>
-
                                         </div>
                                     </div>
                                     @endforeach
@@ -69,8 +69,8 @@
                 <div class="card col-lg-3 mb-5   m-lg-4"  style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;display: inline-block" >
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{$stor->story_title}}</h5>
-                        <h5 class="card-title">Questions: {{$stor->quil_question->count()}}</h5>
-                        <a href="{{url('start/quil_connect/'.$stor->id.'')}}" style="border-radius: 25px"  class="btn btn-primary">Start Activity</a>
+                        <h5 class="card-title">category:{{$stor->category->name}} </h5>
+                        <a href="{{url('start/proofread/'.$stor->id.'')}}" style="border-radius: 25px"  class="btn btn-primary">Start Activity</a>
                     </div>
                 </div>
 
@@ -92,14 +92,12 @@
     <!--  -->
 
 
-
-
     <!--  -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- <script src="https://nightly.ckeditor.com/full/ckeditor.js"></script> -->
 <!-- <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> -->
-<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+
 
 
     <script>

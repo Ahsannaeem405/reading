@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\reading;
+use App\Models\ProofreadDetail;
 use App\Models\storyQuestion;
 use App\Models\storyQuestionDetail;
 use App\Models\QuilContQuestion;
@@ -234,11 +235,50 @@ class userReading extends Controller
 
     public function proofreading()
     {
-        dd('l');
+        // dd('l');
         $story=reading::orderBy('id','DESC')->where('type','proofread_admin')->get();
 
         $category=category::all();
-        return view('userSide.reading.quil_connect',compact('story','category'));
+        return view('userSide.reading.proofread',compact('story','category'));
+    }
+    public function proofreading_catg($id)
+    {
+        // dd('l');
+        $story=reading::where('cat_id',$id)->where('type','proofread_admin')->get();
+
+        $category=category::all();
+        return view('userSide.reading.proofread',compact('story','category'));
+    }
+
+    public function proofread_start($id,Request $request)
+    {
+        // dd($id);
+        $story=reading::find($id);
+        // dd($story->quil_question);
+        // $words = JoiningWord::all();
+        return view('userSide.reading.proofread_start',compact('story'));
+    }
+
+    public function proofread_save(Request $request)
+    {
+        
+        // dd($request);
+        $reading = new reading();
+        $reading->story_title = $request->story_title;
+        // $reading->writer_name = $request->writer_name;
+        $reading->cat_id = $request->cat_id;
+        $reading->spend_time = $request->spended_time;
+        $reading->type = "proofread_user";
+        $reading->user_id = \Auth::user()->id;
+        $reading->save();
+
+        $Proofread = new ProofreadDetail();
+        $Proofread->content = $request->content;
+        $Proofread->proofread_id = $reading->id;
+        $Proofread->user_content = $request->proofread_content;
+        $Proofread->save();
+        return redirect('students/dashboard');
+
     }
 
 }
