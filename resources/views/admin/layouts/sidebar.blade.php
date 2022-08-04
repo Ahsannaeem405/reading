@@ -93,6 +93,23 @@
                 </ul>
 
             </li>
+
+            <!--  -->
+            <li class={{ Request::is('admin/grammer')? 'active' : '' }} ><a href=""><i class="feather icon-user"></i><span class="menu-title" data-i18n="profile">Reading Grammer</span></a>
+                <ul class="menu-content">
+
+                    <li class={{ Request::is('')? 'active' : '' }} ><a href="{{url('admin/readings/question_category')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Question Category</span></a>
+                    </li>
+
+                    <li class={{ Request::is('admin/readings/grammer')? 'active' : '' }} ><a href="{{url('admin/readings/grammer')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Grammer</span></a>
+                    </li>
+
+                    
+
+                </ul>
+
+            </li>
+            <!--  -->
             
             <!--  -->
             <li class={{ Request::is('admin/vocabulary')? 'active' : '' }} ><a href=""><i class="feather icon-user"></i><span class="menu-title" data-i18n="profile">Vocabulary</span></a>

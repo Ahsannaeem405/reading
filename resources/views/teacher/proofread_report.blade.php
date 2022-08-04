@@ -58,7 +58,6 @@
                                         <span class="rating__result"></span>
                                             @php
                                                 $max=5-$reading->obtain;
-
                                                 $i=1;
                                                 @endphp
 

@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('start/proofread/{id}',[\App\Http\Controllers\userReading::class,'proofread_start']);
     Route::post('proofread/save/{id}',[\App\Http\Controllers\userReading::class,'proofread_save']);
 
+    Route::get('grammer',[\App\Http\Controllers\ReadingGrammerController::class,'grammer_start']);
     
 
 });
@@ -168,8 +169,15 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function (){
     Route::post('/writing/grammer/update/{id}',[\App\Http\Controllers\WritingGrammerController::class,'update']);
 
 
+    //reading grammer
+    Route::get('/readings/grammer',[\App\Http\Controllers\ReadingGrammerController::class,'index']);
+    Route::get('/readings/grammer/create',[\App\Http\Controllers\ReadingGrammerController::class,'create_grammer']);
+    Route::post('/readings/grammer/save',[\App\Http\Controllers\ReadingGrammerController::class,'save_grammer']);
+    Route::get('/readings/grammer/edit/{id}',[\App\Http\Controllers\ReadingGrammerController::class,'edit_grammer']);
+    Route::post('/readings/grammer/update/{id}',[\App\Http\Controllers\ReadingGrammerController::class,'update_grammer']);
+    Route::get('/readings/grammer/del/{id}',[\App\Http\Controllers\ReadingGrammerController::class,'del_grammer']);
 
-
+    //reading grammer end
 });
 
 Auth::routes();

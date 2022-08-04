@@ -377,6 +377,7 @@
                                                 <a class="d-block tabitm" href="{{url('/quil_connect')}}" style="color:black;">Connect</a>
                                                 <a class="d-block tabitm" href="{{url('/readings')}}" style="color:black;">Story</a>
                                                 <a class="d-block tabitm" href="{{url('/proofreading')}}" style="color:black;">Proofreading</a>
+                                                <a class="d-block tabitm" href="{{url('/grammer')}}" style="color:black;">Grammer</a>
                                             </div>
                                             <li><a href="{{url('/writing')}}">Writing</a></li>
                                             <li><a href="{{url('/vocabulary')}}">vocabulary </a></li>
