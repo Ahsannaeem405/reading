@@ -30,33 +30,39 @@
 
 
                     
-                    <div class="row" style="justify-content: center;">
+                    <div class="row" style="">
 
                         
-                        <div class="col-lg-11 p-4 ">
+                        <div class="col-lg-12 p-4 ">
 
-                            <div class="q_1 ">
+                            
                                 
                                 
                                 <div class="bottom mt-5 ml-lg-4">
-                                    <div class="row">
-                                        <h4 for="">Proofreading content:</h4>
-                                        <div id="div1" class="col-lg-12 col-sm-12 " style="text-align: justify; border-radius: 12px; padding: 20px; box-shadow: 0px 1px 6px 2px grey;">
-                                        {{$reading->proofdetail->content}}
+                                    <div class="row" style="justify-content: space-evenly; padding: -3px;">
+                                        <div class="col-lg-5 col-sm-11 mr-2">
+                                            <h4 class="" for="">Proofreading content:</h4>
+                                            <div id="div1" class="" style="text-align: justify; border-radius: 12px; padding: 20px; box-shadow: 0px 1px 6px 2px grey;">
+                                            {{$reading->proofdetail->content}}
 
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 col-sm-11 mr-2">
+                                            <h4 class="" for="">After proofreading:</h4>
+                                            <div id="div2" class="" style="text-align: justify; border-radius: 12px; padding: 20px; box-shadow: 0px 1px 6px 2px grey;">
+                                            {{$reading->proofdetail->user_content}}
+
+                                            </div>
                                         </div>
 
-                                        <h4 class="mt-4 pt-4" for="">After proofreading:</h4>
-                                        <div id="div2" class="col-lg-12 col-sm-12" style="text-align: justify; border-radius: 12px; padding: 20px; box-shadow: 0px 1px 6px 2px grey;">
-                                        {{$reading->proofdetail->user_content}}
 
-                                        </div>
+                                        
 
-
+                                    </div>
+                                    <div class="d-flex">
                                         <label class="mt-5 text">Teacher Remarks</label>
-                                    
                                         <div class="rating mb-3 mt-5 mx-5">
-                                        <span class="rating__result"></span>
+                                            <span class="rating__result"></span>
                                             @php
                                                 $max=5-$reading->obtain;
 
@@ -72,14 +78,15 @@
                                                 <i class="rating__star far fa-star star_num" abc="{{$i++}}"></i>
                                             @endfor
                                         </div>
-
-
                                     </div>
+                                    
+                                    
+                                        
                                     <textarea disabled name="remarks" id="" cols="30" rows="10" class="form-control" placeholder="Remarks">{{$reading->proofdetail->teacher_remarks}}</textarea>
                                 </div>
 
 
-                            </div>
+                            
                         </div>
                         
 
