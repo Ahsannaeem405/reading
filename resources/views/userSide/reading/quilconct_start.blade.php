@@ -147,7 +147,7 @@
                                             
                                         </div>
                                         <div class="row main3 {{$loop->first ? 'active2':'d-none'}}" style="position:relative;">
-                                            <div class="w-100" style="position: absolute; top: 36px;">
+                                            <div class="w-100" style="position: absolute; top: 31px;">
                                                 <div class="" style="">
                                                     @if(!$loop->first)
                                                     <div class="right-btn" style="float: left;">

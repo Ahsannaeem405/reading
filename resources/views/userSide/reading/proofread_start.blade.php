@@ -73,14 +73,14 @@
 
                                             
                                         </div>
-                                        <div class="row main3 active2}}" style="position:relative;">
-                                            <div class="w-100" style="position: absolute; top: 36px;">
+                                        <div class="row main3 active2" style="position:relative;">
+                                            <div class="w-100" style="position: absolute; top: 31px;">
                                                
                                                 <div class="" style="">
                                                 
                                                     <div class="right-btn" style="float: right;margin-right: 15px;">
                                                         <input type="submit" class="btn btn-success"
-                                                            style="    left: 15px;border-radius: 0px 0px 25px 0px;background: #35922d !important; "
+                                                            style="left: 15px;border-radius: 0px 0px 25px 0px;background: #35922d !important; "
                                                             value="Submit">
                                                         
                                                     </div> 
