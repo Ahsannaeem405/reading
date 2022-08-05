@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\reading;
 use App\Models\topicSubmit;
 use App\Models\User;
+use App\Models\GrammerReport;
 use Illuminate\Http\Request;
 use DB;
 
@@ -20,9 +21,10 @@ class teacher extends Controller
  {
      $reading=reading::where('user_id',$id)->whereIn('type', ['user', 'quilconct_user', 'proofread_user'])->orderBy('id','DESC')->get();
     //  dd($reading);
-     $writing_topic=topicSubmit::where('user_id',$id)->orderBy('id','DESC')->get();
+    $writing_topic=topicSubmit::where('user_id',$id)->orderBy('id','DESC')->get();
+    $reading_grammer=GrammerReport::where('user_id',$id)->orderBy('id','DESC')->get();
     $user = User::find($id);
-     return view('teacher.report',compact('reading','writing_topic','user'));
+    return view('teacher.report',compact('reading','writing_topic','user','reading_grammer'));
  }
 
  public function reading_report($id)
@@ -33,6 +35,22 @@ class teacher extends Controller
     $reading->update();
     $student_id=$reading->user_id;
     return view('teacher.reading_report',compact('reading','student_id'));
+ }
+
+ public function grammer_report($id)
+ {
+
+// dd('');
+    $reading=GrammerReport::find($id);
+        // dd($reading);
+
+    //    return view('userSide.reading.grammer.report',compact('reading'));
+
+    // $reading=reading::find($id);
+    $reading->read_teacher=1;
+    $reading->update();
+    $student_id=$reading->user_id;
+    return view('teacher.grammer_report',compact('reading','student_id'));
  }
 
  public function writing_topic_report($id)

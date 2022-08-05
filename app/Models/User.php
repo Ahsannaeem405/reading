@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return     $this->hasMany('App\Models\reading','user_id','id')->where('read_teacher',0);
     }
+
+    public function grammer_reports()
+    {
+        return     $this->hasMany('App\Models\GrammerReport','user_id','id')->where('read_teacher',0);
+    }
 }

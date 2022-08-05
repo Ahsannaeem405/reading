@@ -5,9 +5,9 @@
 
 <main style="background-color: #c9faf3">
     <div class="container">
-        <form method="post" action="{{url('quil_connect/save/')}}">
+        <form method="post" action="{{url('grammer/save')}}">
             @csrf
-            
+            <input type="hidden" name="spend_time" id="spend_time">
             <div class="row " style="">
                 <div class="container div1 active">
                             <h2 class="title is-3 register">Welcome to Grammer!</h2>
@@ -67,14 +67,11 @@
 
                                                 <div class="q_1 ">
                                                     <b><span>Question# {{$count}} of {{$total_question}}:</span></b>
-                                                    <span><input type="hidden" value="{{$question->first_sentence}}" name="sentence1[]"></span>
-                                                    <span><input type="hidden" value="{{$question->second_sentence}}" name="sentence2[]"></span>
-                                                    <span><input type="hidden" value="{{$question->answer}}" name="answer[]"></span>
+                                                    <!-- <span><input type="hidden" value="{{$question->first_sentence}}" name="sentence1[]"></span> -->
+                                                    <!-- <span><input type="hidden" value="{{$question->second_sentence}}" name="sentence2[]"></span> -->
+                                                    <span><input type="hidden" value="{{$question->correct_answer}}" name="answer[]"></span>
                                                     <p>{{$question->q_part1}} <b><u>{{$question->q_part2}}</u></b> {{$question->q_part3}}</p>
-                                                    <input type="hidden" name="q_id[]" value="{{$question->id}}">
-                                                    <h2>{{ $question->first_sentence }}</h2>
-                                                    <h2>{{ $question->second_sentence }}</h2>
-
+                                                    <input type="hidden" name="catg_id[]" value="{{$question->category->id}}">
                                                     
                                                     <div class="col-12 pb-1 my-2" style="padding-top: 1rem!important;background-color: #e5e5e5;">
                                                     <p>Rewrite the sentence with the correct underlined word.</p>
@@ -83,16 +80,6 @@
                                                     <div class="col-12 pb-1 my-2" style="padding-top: 1rem!important;">
                                                     <input class="form-control activeans" type="text" name="user_answer[]" required placeholder="Type your answer here" style="padding-top: 32px; padding-bottom: 32px; margin-left: -14px; width: 105%;">
                                                     </div>
-                                                    <div class="bottom mt-5 ml-lg-4">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-sm-12">
-                                                                @php $count2=1; @endphp
-                                                                
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
 
                                                 </div>
                                             </div>
@@ -109,9 +96,6 @@
                                                 </div>
 
                                             </div>
-
-
-                                            
                                         </div>
                                         <div class="row main3 {{$loop->first ? 'active2':'d-none'}}" style="position:relative;">
                                             <div class="w-100" style="position: absolute; top: 31px;">

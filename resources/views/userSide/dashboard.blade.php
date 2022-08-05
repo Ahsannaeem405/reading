@@ -70,19 +70,8 @@
                                         @else
                                         <a href="{{url('students/reading/report/'.$read->id.'')}}">
 
-                                                        <i class="fa 
-                                                        @if($read->obtain ==Null) 
-                                                        fa-question 
-                                                        @else 
-                                                            @if($read->obtain >2)
-                                                            fa-check
-                                                            @else
-                                                            fa-times 
-                                                            @endif
-                                                        @endif
-                                                        mb-1 d-inline-block "
-                                                        style="font-weight: bolder;color: white;border-radius:5px;
-                                                        @if($read->obtain ==Null)background-color: orangered; 
+                                                        <i class="fa @if($read->obtain ==Null) fa-question @else @if($read->obtain >2) fa-check @else fa-times @endif @endif mb-1 d-inline-block" 
+                                                        style="font-weight: bolder;color: white;border-radius:5px; @if($read->obtain ==Null)background-color: orangered; 
                                                             
                                                         @else 
                                                             @if($read->obtain >2)
@@ -96,6 +85,15 @@
                                                     </a>
                                         @endif
                                       
+
+                                        @endforeach
+                                        <br>
+                                        @foreach($reading_grammer as $report)
+
+                                        @php $avg=($report->obtain / $report->total)*100; @endphp
+                                            <a href="{{url('students/grammer/report/'.$report->id.'')}}">
+                                                <i class="fa @if($avg>50) fa-check @else fa-times @endif mb-1" style="font-weight: bolder;color: white;border-radius:5px; @if($avg>50)background-color: greenyellow; @else background-color: orangered;  @endif padding: 5px"></i>
+                                            </a>
 
                                         @endforeach
                                     </div>
@@ -148,7 +146,7 @@
 
                                     <div class="col-lg-3 mt-2 mt-lg-0" style="border-left: 1px solid lightgreen; ">
 
-                                        @foreach($writing_topic as $topic)
+                                            @foreach($writing_topic as $topic)
                                             @if($topic->teacher_read==1 )
 
 
@@ -161,7 +159,7 @@
 
                                             @endforeach
 
-                                        @foreach($writing_grammer as $gram)
+                                            @foreach($writing_grammer as $gram)
                                                 @php $avg=($gram->obtain / $gram->total)*100; @endphp
 
                                                 <a href="{{url('student/writing/grammer/report/'.$gram->id.'')}}">    <i class="fa @if($avg>50) fa-check @else fa-times  @endif" style="font-weight: bolder;color: white;border-radius:5px;background-color: @if($avg>50) greenyellow @else red @endif;padding: 5px"></i></a>

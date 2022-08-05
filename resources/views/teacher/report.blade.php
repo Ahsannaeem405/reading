@@ -21,14 +21,7 @@
 
         <div class="container">
             <div class="container-fluid">
-                @if(session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session()->get('success') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
+                
                 <div class="row mb-5 mt-5">
                     <div class="col-lg-12">
 
@@ -69,7 +62,7 @@
 
                                                     @php $avg=($read->obtain / $read->total)*100; @endphp
 
-                                                    <a href="{{url('teacher/student/report/reading/'.$read->id.'')}}">  <div style="display: inline-block">
+                                                    <a href="{{url('teacher/student/report/reading/'.$read->id.'')}}" title="Story">  <div style="display: inline-block">
 
                                                         <i class="fa @if($avg>50) fa-check @else fa-times @endif mb-1 d-inline-block "
                                                         style="font-weight: bolder;color: white;border-radius:5px;@if($avg>50)background-color: greenyellow; @else background-color: orangered;  @endif ;padding: 5px"></i>
@@ -81,7 +74,7 @@
                                                     </a>
                                                     
                                                 @else
-                                                    <a href="{{url('teacher/student/report/reading/'.$read->id.'')}}">  <div style="display: inline-block">
+                                                    <a href="{{url('teacher/student/report/reading/'.$read->id.'')}}" title="Proofreading">  <div style="display: inline-block">
 
                                                         <i class="fa 
                                                         @if($read->obtain ==Null) 
@@ -114,6 +107,17 @@
                                                     </a>
 
                                                 @endif
+                                                @endforeach
+                                                @foreach($reading_grammer as $report)
+
+                                                @php $avg=($report->obtain / $report->total)*100; @endphp
+                                                    <a href="{{url('teacher/students/grammer/report/'.$report->id.'')}}" title="Grammer">
+                                                        <i class="fa @if($avg>50) fa-check @else fa-times @endif mb-1" style="font-weight: bolder;color: white;border-radius:5px; @if($avg>50)background-color: greenyellow; @else background-color: orangered;  @endif padding: 5px"></i>
+                                                        @if($report->read_teacher==0)
+                                                        <div  class="d-inline-block" style="margin-left:-11px;background-color: red;width: 15px;height: 15px;border-radius: 50%;color: white;text-align: center;"><sup style="color: white" >1</sup></div>
+                                                        @endif
+                                                    </a>
+
                                                 @endforeach
 
                                                 

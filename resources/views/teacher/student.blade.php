@@ -45,7 +45,12 @@
             <td>{{$stu->name}}</td>
             <td>{{$stu->email}}</td>
             <td>{{$stu->phone}}</td>
-            <td><div style="background-color: green;width: 25px;height: 25px;border-radius: 50%;color: white;text-align: center;"><span>{{ $stu->readings->count() }}</span></div></td>
+            <td><div style="background-color: green;width: 25px;height: 25px;border-radius: 50%;color: white;text-align: center;"><span>
+                @php 
+                $var=$stu->readings->count(); 
+                $var2=$stu->grammer_reports->count();
+                echo $var+$var2;
+                @endphp</span></div></td>
             <td><a href="{{url('teacher/student/report/'.$stu->id.'')}}"> <input type="button" class="btn btn-success p-3" style="border-radius: 5px" value="View Report" ></a></td>
         </tr>
         @endforeach

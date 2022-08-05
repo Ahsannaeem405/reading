@@ -6,6 +6,7 @@ use App\Models\grammerSubmit;
 use App\Models\reading;
 use App\Models\topicSubmit;
 use App\Models\writingGrammer;
+use App\Models\GrammerReport;
 use Illuminate\Http\Request;
 
 class userDashboard extends Controller
@@ -21,7 +22,10 @@ class userDashboard extends Controller
         $writing_topic=topicSubmit::where('user_id',\Auth::user()->id)->orderBy('id','DESC')->get();
         $writing_grammer=grammerSubmit::where('user_id',\Auth::user()->id)->orderBy('id','DESC')->get();
 
-        return view('userSide.dashboard',compact('reading','writing_topic','writing_grammer'));
+        $reading_grammer=GrammerReport::where('user_id',\Auth::user()->id)->orderBy('id','DESC')->get();
+        // dd($reading_grammer);
+
+        return view('userSide.dashboard',compact('reading','writing_topic','writing_grammer','reading_grammer'));
     }
 
     public function read_report($id)
@@ -30,6 +34,13 @@ class userDashboard extends Controller
        return view('userSide.reading.report.reading_report',compact('reading'));
     }
 
+    public function read_grammer_report($id)
+    {
+        // dd($id);
+        $reading=GrammerReport::find($id);
+        // dd($reading);
+       return view('userSide.reading.grammer.report',compact('reading'));
+    }
     public function writing_topic_report($id)
     {
         $topic=topicSubmit::find($id);

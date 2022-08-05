@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/students/dashboard',[\App\Http\Controllers\userDashboard::class,'index']);
     Route::get('students/reading/report/{id}',[\App\Http\Controllers\userDashboard::class,'read_report']);
+    Route::get('students/grammer/report/{id}',[\App\Http\Controllers\userDashboard::class,'read_grammer_report']);
+    //
     Route::get('student/writing/topic/report/{id}',[\App\Http\Controllers\userDashboard::class,'writing_topic_report']);
     Route::get('student/writing/grammer/report/{id}',[\App\Http\Controllers\userDashboard::class,'writing_grammer_report']);
 
@@ -49,12 +51,13 @@ Route::group(['middleware' => 'auth'], function () {
     // 
     Route::get('proofreading',[\App\Http\Controllers\userReading::class,'proofreading']);
     Route::get('proofreading/{id}',[\App\Http\Controllers\userReading::class,'proofreading_catg']);
-
     Route::get('start/proofread/{id}',[\App\Http\Controllers\userReading::class,'proofread_start']);
     Route::post('proofread/save/{id}',[\App\Http\Controllers\userReading::class,'proofread_save']);
+    // 
 
     Route::get('grammer',[\App\Http\Controllers\ReadingGrammerController::class,'grammer_start']);
-    
+    Route::post('grammer/save',[\App\Http\Controllers\ReadingGrammerController::class,'grammer_report_save']);
+
 
 });
 
@@ -80,6 +83,9 @@ Route::prefix('/teacher')->middleware(['auth','teacher'])->group(function () {
 Route::get('/Students',[\App\Http\Controllers\teacher::class,'student']);
 Route::get('student/report/{id}',[\App\Http\Controllers\teacher::class,'report']);
 Route::get('student/report/reading/{id}',[\App\Http\Controllers\teacher::class,'reading_report']);
+Route::get('students/grammer/report/{id}',[\App\Http\Controllers\teacher::class,'grammer_report']);
+
+// 
 Route::get('student/writing/topic/report/{id}',[\App\Http\Controllers\teacher::class,'writing_topic_report']);
 Route::post('student/writing/topic/report/submit/{id}',[\App\Http\Controllers\teacher::class,'writing_topic_report_submit']);
 
