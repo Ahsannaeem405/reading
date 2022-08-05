@@ -581,13 +581,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-
-    // $(document).ready(function(){
-    //     // alert('hh');
-    //     toastr.success('dslfgjkfdlgj');
-    // });
-
-
 @if(Session::has('success'))
     toastr.success('{{ Session::get('success') }}');
 @elseif(Session::has('error'))

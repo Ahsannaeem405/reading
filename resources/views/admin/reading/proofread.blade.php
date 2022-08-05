@@ -12,11 +12,7 @@
                         <h4 class="card-title">Proofread</h4>
                       <a href="{{url('admin/readings/proofread/add')}}">  <input type="button" class="btn btn-primary" value="ADD"></a>
                     </div>
-                    @if(session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
+                    
 
                     <div class="card-content">
                         <div class="card-body card-dashboard">

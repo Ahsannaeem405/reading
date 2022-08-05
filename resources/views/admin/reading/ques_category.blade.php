@@ -44,12 +44,7 @@
                         <input type="button" class="btn btn-primary"  value=" ADD">
 
                     </div>
-                    @if(session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
-
+                   
 
                         <div class="card-content">
                         <div class="card-body card-dashboard">
