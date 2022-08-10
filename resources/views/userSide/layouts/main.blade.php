@@ -355,9 +355,7 @@
                                 <ul id="navigation">
                                     @if(Auth::check())
                                         @if(Auth::user()->role =='student')
-                                        <li><a href="{{url('/students/dashboard')}}"><input type="button"
-                                                                                        class="btn btn-success "
-                                                                                        value="Dashboard"></a></li>
+                                        <li><a href="{{url('/students/dashboard')}}" class={{ Request::is('students/dashboard')? 'text-success' : '' }} >Dashboard</a></li>
                                     @endif
                                     @endif
 
@@ -379,8 +377,9 @@
                                                 <a class="d-block tabitm" href="{{url('/proofreading')}}" style="color:black;">Proofreading</a>
                                                 <a class="d-block tabitm" href="{{url('/grammer')}}" style="color:black;">Grammer</a>
                                             </div>
-                                            <li><a href="{{url('/writing')}}">Writing</a></li>
-                                            <li><a href="{{url('/vocabulary')}}">vocabulary </a></li>
+                                            
+                                            <li><a href="{{url('/writing')}}" class={{ Request::is('writing')? 'text-success' : '' }} >Writing</a></li>
+                                            <li><a href="{{url('/vocabulary')}}"  class={{ Request::is('vocabulary')? 'text-success' : '' }} >vocabulary </a></li>
                                             <!-- <li><a href="{{url('/quil_connect')}}">quil connect</a></li> -->
 
                                         @endif
